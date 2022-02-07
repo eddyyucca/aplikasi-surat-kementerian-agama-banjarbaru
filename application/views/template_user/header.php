@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="shortcut icon" href=" <?= base_url('assets') ?>/favicon1.png">
+  <!-- <link rel="shortcut icon" href=" <?= base_url('assets') ?>/favicon1.png"> -->
   <title><?= $judul; ?></title>
 
   <!-- Custom fonts for this template-->
@@ -34,11 +34,11 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+      <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user') ?>">
           <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/logo2.png'); ?>" width="50" height="60" alt="Logo">
+            <img src="<?= base_url('assets/logo666.png'); ?>" width="50" height="60" alt="Logo">
           </div>
           <div class="sidebar-brand-text mx-3">Vaksin</div>
         </a>

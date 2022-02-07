@@ -2,7 +2,7 @@
     <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000" data-pause="true">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-7">
+                <div class="col-lg-12">
                     <div class="card o-hidden border-0 shadow-lg my-5 ">
                         <div class="card-body p-0">
                             <!-- Nested Row within Card Body -->
@@ -18,38 +18,50 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('auth/proses_daftar')  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_surat_masuk')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
-                                                                    <td width=20%>No KTP</td>
-                                                                    <td><input type="text" name="no_ktp" class="form-control" required placeholder="No KTP" disabled></td>
+                                                                    <td width=20%>Nama Surat</td>
+                                                                    <td><input type="text" name="nama_surat" class="form-control" required placeholder="Nama Surat"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width=20%>Nama Lengkap</td>
-                                                                    <td><input type="text" name="nama_lengkap" class="form-control" required placeholder="Nama Lengkap"></td>
+                                                                    <td width=20%>Nomor Surat</td>
+                                                                    <td><input type="text" name="no_surat" class="form-control" required placeholder="Nomor Surat"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Jenis Kelamin</td>
-                                                                    <td><select class="form-control" name="jk">
-                                                                            <option value="Laki-Laki">Laki-Laki</option>
-                                                                            <option value="Perempuan">Perempuan</option>
-                                                                        </select></td>
+                                                                    <td width=20%>Asal Surat</td>
+                                                                    <td><input type="text" name="asal_surat_masuk" class="form-control" required placeholder="Asal Surat"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Tempat/Tanggal/Lahir</td>
-                                                                    <td><input type="text" name="tempat" class="form-control" required placeholder="Tempat">
-                                                                        <input type="date" name="ttl" class="form-control">
+                                                                    <td width=20%>Tanggal Surat Masuk</td>
+                                                                    <td><input type="date" name="tgl_s_masuk" class="form-control" required placeholder="Nomor Surat Masuk"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=20%>Tanggal Terima Surat</td>
+                                                                    <td><input type="date" name="tgl_t_sm" class="form-control" required placeholder="Tanggal Terima Surat"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=20%>Perihal</td>
+                                                                    <td><textarea class="form-control" name="perihal" rows="5"></textarea></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Disposisi</td>
+                                                                    <td><select name="disposisi" class="form-control">
+                                                                            <option value="">--PILIH DISPOSISI--</option>
+                                                                            <?php foreach ($disposisi as $dis) { ?>
+                                                                                <option value="<?= $dis->id_disposisi ?>"><?= $dis->nama_disposisi ?></option>
+                                                                            <?php } ?>
+                                                                        </select>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Alamat Saat Ini</td>
-                                                                    <td><textarea name="alamat" class="form-control"></textarea></td>
-                                                                </tr>
+                                                                    <td>File</td>
+                                                                    <td>
 
-                                                                <tr>
-                                                                    <td>Telpon</td>
-                                                                    <td><input type="text" name="telpon" class="form-control" required placeholder="Telpon" disabled></td>
-                                                                </tr>
+                                                                        <div class="custom-file">
+                                                                            <input type="file" name="file_surat" class="">
+                                                                        </div>
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
@@ -63,8 +75,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <a href="<?= base_url('admin/warga') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                                     </div>
                                 </div>
                             </div>

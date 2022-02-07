@@ -18,31 +18,33 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_surat_masuk/') . $data->id_surat_masuk  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_surat_masuk')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
+                                                                id_surat_masuk nama_surat no_surat tgl_s_masuk tgl_t_sm asal_surat_masuk perihal file_surat disposisi bulan_smasuk
+
                                                                 <tr>
                                                                     <td width=20%>Nama Surat</td>
-                                                                    <td><input type="text" name="nama_surat" value="<?= $data->nama_surat ?>" class="form-control" required placeholder="Nama Surat"></td>
+                                                                    <td><input type="text" name="nama_surat" class="form-control" required placeholder="Nama Surat"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Nomor Surat</td>
-                                                                    <td><input type="text" name="no_surat" value="<?= $data->no_surat ?>" class="form-control" required placeholder="Nomor Surat"></td>
+                                                                    <td><input type="text" name="no_surat" class="form-control" required placeholder="Nomor Surat"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Asal Surat</td>
-                                                                    <td><input type="text" name="asal_surat_masuk" value="<?= $data->asal_surat_masuk ?>" class="form-control" required placeholder="Asal Surat"></td>
+                                                                    <td><input type="text" name="asal_surat_masuk" class="form-control" required placeholder="Asal Surat"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Tanggal Surat Masuk</td>
-                                                                    <td><input type="date" name="tgl_s_masuk" value="<?= $data->tgl_s_masuk ?>" class="form-control" required placeholder="Nomor Surat Masuk"></td>
+                                                                    <td><input type="date" name="tgl_s_masuk" class="form-control" required placeholder="Nomor Surat Masuk"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Tanggal Terima Surat</td>
-                                                                    <td><input type="date" name="tgl_t_sm" value="<?= $data->tgl_t_sm ?>" class="form-control" required placeholder="Tanggal Terima Surat"></td>
+                                                                    <td><input type="date" name="tgl_t_sm" class="form-control" required placeholder="Tanggal Terima Surat"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Perihal</td>
-                                                                    <td><textarea class="form-control" name="perihal" rows="5"><?= $data->perihal ?>"</textarea></td>
+                                                                    <td><textarea class="form-control" name="perihal" rows="5"></textarea></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Disposisi</td>

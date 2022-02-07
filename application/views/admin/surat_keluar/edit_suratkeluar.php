@@ -12,7 +12,7 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header">
-                                                Pendaftaran Vaksin
+                                                Edit Data Warga
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
@@ -22,7 +22,7 @@
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>No KTP</td>
-                                                                    <td><input type="text" name="no_ktp" class="form-control" required placeholder="No KTP"></td>
+                                                                    <td><input type="text" name="no_ktp" class="form-control" required placeholder="No KTP" disabled></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Nama Lengkap</td>
@@ -48,7 +48,7 @@
 
                                                                 <tr>
                                                                     <td>Telpon</td>
-                                                                    <td><input type="text" name="telpon" class="form-control" required placeholder="Telpon"></td>
+                                                                    <td><input type="text" name="telpon" class="form-control" required placeholder="Telpon" disabled></td>
                                                                 </tr>
                                                                 </tr>
                                                                 <tr>
@@ -64,7 +64,7 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <a href="<?= base_url('auth') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+                                        <a href="<?= base_url('admin/warga') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                                     </div>
                                 </div>
                             </div>

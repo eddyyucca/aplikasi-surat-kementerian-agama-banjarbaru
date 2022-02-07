@@ -7,42 +7,21 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/tambah_surat_masuk') ?>" class="btn btn-primary">Tambah Surat Masuk</a>
-
-                    <?php if ($bulan == false) { ?>
-                        <a href="<?= base_url('admin/cetak_surat_masuk') ?>" class="btn btn-primary">Cetak Surat Masuk</a>
-                        <hr>
-                        <form action="<?= base_url('admin/caritanggal_sm') ?>" method="post">
-                            <div class="input-group mb-3 col-6">
-                                <select name="bulan" class="form-control">
-                                    <option value="00">--PILIH BULAN--</option>
-                                    <option value="01">--Januari--</option>
-                                    <option value="02">--Februari--</option>
-                                    <option value="03">--Maret--</option>
-                                    <option value="04">--April--</option>
-                                    <option value="05">--Mai--</option>
-                                    <option value="06">--Juni--</option>
-                                    <option value="07">--Juli--</option>
-                                    <option value="08">--Agustus--</option>
-                                    <option value="09">--September--</option>
-                                    <option value="10">--Oktober--</option>
-                                    <option value="11">--November--</option>
-                                    <option value="12">--Desember--</option>
-
-                                </select>
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
-                                </div>
+                    <a href="<?= base_url('admin/cetak_disposisi') ?>" class="btn btn-primary">Cetak Surat Disposisi</a>
+                    <hr>
+                    <form action="<?= base_url('admin/disposisi_cari') ?>" method="post">
+                        <div class="input-group mb-3 col-6">
+                            <select name="disposisi" class="form-control">
+                                <option value="">--PILIH DISPOSISI--</option>
+                                <?php foreach ($disposisi as $dis) { ?>
+                                    <option value="<?= $dis->id_disposisi ?>"><?= $dis->nama_disposisi ?></option>
+                                <?php } ?>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
                             </div>
-                        </form>
-                    <?php  } else { ?>
-                        <hr>
-                        <form action="<?= base_url('admin/cetak_surat_masuk_bulan') ?>" method="post">
-                            <input type="hidden" name="bulan" value="<?= $bulan ?>">
-                            <button class="btn btn-primary" type="submit" id="button-addon2">Cetak Surat Masuk</button>
-                        </form>
-                    <?php } ?>
-
+                        </div>
+                    </form>
                     <hr>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

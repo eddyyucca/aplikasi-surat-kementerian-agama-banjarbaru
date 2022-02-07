@@ -22,190 +22,56 @@ class Admin_m extends CI_Model
             return 0;
         }
     }
-    public function cek($id_lowongan, $id_alumni)
+    public function get_all_suratmasuk()
     {
-        $this->db->where('id_lowongan', $id_lowongan);
-        $this->db->where('id_alumni', $id_alumni);
-        return $this->db->get('lamaran')->row();
-    }
+        $this->db->join('disposisi', 'disposisi.id_disposisi = surat_masuk.disposisi', 'left');
 
-    public function jumlah_absen_bulan($bulan)
-    {
-        $this->db->select('*');
-        $this->db->from('absen');
-        $this->db->where('MONTH(absen.tanggal)', $bulan);
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            return $query->num_rows();
-        } else {
-            return 0;
-        }
+        return   $this->db->get('surat_masuk')->result();
     }
+    public function get_all_akun()
+    {
+        return   $this->db->get('akun')->result();
+    }
+    public function get_row_akun($id_akun)
+    {
+        $this->db->where('id_akun', $id_akun);
 
-    public function jumlah_bidang()
-    {
-        $query = $this->db->get('bidang');
-        if ($query->num_rows() > 0) {
-            return $query->num_rows();
-        } else {
-            return 0;
-        }
+        return   $this->db->get('akun')->row();
     }
-    public function get_all_vaksin()
+    public function get_all_suratmasuk_bulan($bulan)
     {
-        return $this->db->get('vaksin')->result();
-    }
+        $this->db->where('bulan_smasuk', $bulan);
 
-    public function get_all_warga()
-    {
-        return $this->db->get('warga')->result();
-    }
-    public function get_all_warga_sdh1()
-    {
-        $this->db->join('warga', 'warga.id_warga = hasil.id_warga');
-        $this->db->where('vaksin_ke', '1');
-        return $this->db->get('hasil')->result();
-    }
-    public function get_all_warga_gagal()
-    {
-        $this->db->join('warga', 'warga.id_warga = hasil.id_warga');
-        $this->db->where('vaksin', 'Gagal');
-        return $this->db->get('hasil')->result();
-    }
-    public function get_all_warga_sdh2()
-    {
-        $this->db->join('warga', 'warga.id_warga = hasil.id_warga');
-        $this->db->where('vaksin_ke', '2');
-        return $this->db->get('hasil')->result();
-    }
-    public function get_all_warga_sdh3()
-    {
-        $this->db->join('warga', 'warga.id_warga = hasil.id_warga');
-        $this->db->where('vaksin_ke', '3');
-        return $this->db->get('hasil')->result();
-    }
-    public function get_all_warga_blm()
-    {
-        $this->db->where('status', '0');
-        return $this->db->get('warga')->result();
-    }
-    public function get_all_dokter()
-    {
-        return $this->db->get('dokter')->result();
-    }
-    public function get_row_dokter($id_dokter)
-    {
-        $this->db->where('id_dokter', $id_dokter);
+        $this->db->join('disposisi', 'disposisi.id_disposisi = surat_masuk.disposisi', 'left');
 
-        return $this->db->get('dokter')->row();
+        return   $this->db->get('surat_masuk')->result();
     }
-    public function get_row_warga($id_warga)
+    public function get_all_suratmasuk_disposisi($id_disposisi)
     {
-        $this->db->where('id_warga', $id_warga);
+        $this->db->where('id_disposisi', $id_disposisi);
 
-        return $this->db->get('warga')->row();
+        $this->db->join('disposisi', 'disposisi.id_disposisi = surat_masuk.disposisi', 'left');
+
+        return   $this->db->get('surat_masuk')->result();
     }
-    public function get_status($id_alumni)
+    public function get_row_suratmasuk($id_surat_masuk)
     {
 
-        // $this->db->select('*');
-        // $this->db->from('lamaran');
+        $this->db->where('id_surat_masuk', $id_surat_masuk);
 
-        // // $this->db->join('alumni', 'alumni.id_alumni = lamaran.id_alumni');
-        // $this->db->join('lamaran', 'lamaran.id_lowongan = lamaran.id_lowongan');
-        $this->db->join('lowongan', 'lowongan.id_lowongan = lamaran.id_lowongan');
-        // // $this->db->join('akun', 'akun.telpon = alumni.telpon');
-        // // $this->db->join('jurusan', 'jurusan.id_jurusan = alumni.jurusan_smk');
-        // $this->db->order_by('lowongan.id_lowongan', 'DESC');
-        $this->db->where('id_alumni', $id_alumni);
-        return $this->db->get('lamaran')->result();
-    }
+        $this->db->join('disposisi', 'disposisi.id_disposisi = surat_masuk.disposisi', 'left');
 
-    public function get_row_vaksin($id_vaksin)
-    {
-        $this->db->where('id_vaksin', $id_vaksin);
-        // $this->db->join('jurusan', 'jurusan.id_jurusan = alumni.jurusan_smk');
-        return $this->db->get('vaksin')->row();
+        return   $this->db->get('surat_masuk')->row();
     }
-    public function get_all_permintaan($tgl_permintaan)
-    {
-        $this->db->join('permintaan_vaksin', 'permintaan_vaksin.id_warga = warga.id_warga');
-        $this->db->where('tgl_vaksin', $tgl_permintaan);
-        $this->db->where('hasil', "0");
-        $this->db->order_by('no_urut', 'ASC');
-        return $this->db->get('warga')->result();
-    }
-
-    public function get_row_alumni2($id_alumni)
-    {
-        $this->db->where('id_alumni', $id_alumni);
-        return $this->db->get('alumni')->row();
-    }
-
-    public function get_all_pengajuan_admin()
-    {
-        return $this->db->get('berkas')->result();
-    }
-
-    public function get_all_pengajuan($nip)
+    public function get_all_disposisi()
     {
 
-        $this->db->where('nip', $nip);
-        $this->db->order_by('id_berkas', 'DESC');
-        return $this->db->get('berkas')->result();
+        return   $this->db->get('disposisi')->result();
     }
-
-    public function cek_pass($password, $telpon)
+    public function get_row_disposisi($id_disposisi)
     {
-        $this->db->where('telpon', $telpon);
-        $this->db->where('password', $password);
-        $this->db->limit(1);
-        $query = $this->db->get('akun');
-
-        if ($query->num_rows() == 1) {
-            return $query->result();
-        } else {
-            return false;
-        }
-    }
-
-    public function data_absen($nip)
-    {
-        $this->db->where('id_peg', $nip);
-        $this->db->order_by('id_absen', 'DESC');
-        return $this->db->get('absen')->result();
-    }
-    public function cek_absen($nip, $tanggal)
-    {
-        $this->db->where('id_peg', $nip);
-        $this->db->where('tanggal', $tanggal);
-        $this->db->order_by('id_absen', 'DESC');
-        return $this->db->get('absen')->row();
-    }
-    public function cek_absen_pulang($nip, $tanggal)
-    {
-        $this->db->where('id_peg', $nip);
-        $this->db->where('tanggal', $tanggal);
-        $this->db->order_by('id_absen', 'DESC');
-        return $this->db->get('absen')->result();
-    }
-    public function absen($id_peg)
-    {
-        $this->db->where('id_peg', $id_peg);
-        $this->db->order_by('id_absen', 'DESC');
-        return $this->db->get('absen')->result();
-    }
-
-    public function cari_bulan_absen($date1, $date2, $id_peg)
-    {
-        $this->db->select('*');
-        $this->db->from('absen');
-        $this->db->where('id_peg', $id_peg);
-        $this->db->where('tanggal >=', $date1);
-        $this->db->where('tanggal <=', $date2);
-        $this->db->order_by('id_absen', 'DESC');
-        $query = $this->db->get();
-        return $query->result();
+        $this->db->where('id_disposisi', $id_disposisi);
+        return   $this->db->get('disposisi')->row();
     }
 }
 

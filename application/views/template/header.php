@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="shortcut icon" href=" <?= base_url('assets') ?>/favicon1.png">
+  <!-- <link rel="shortcut icon" href=" <?= base_url('assets') ?>/favicon1.png"> -->
   <title><?= $judul; ?></title>
 
   <!-- Custom fonts for this template-->
@@ -34,11 +34,11 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+      <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
           <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/logo2.png'); ?>" width="50" height="60" alt="Logo">
+            <img src="<?= base_url('assets/logo666.png'); ?>" width="50" height="60" alt="Logo">
           </div>
           <div class="sidebar-brand-text mx-3">E-Surat</div>
         </a>
@@ -55,15 +55,27 @@
         <!-- Nav Item - Pages Collapse Menu -->
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#master" aria-expanded="true" aria-controls="master">
             <i class="fas fa-database"></i>
             <span>Data Master</span>
+          </a>
+          <div id="master" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="<?= base_url('admin/data_disposisi') ?>">Data Disposisi</a>
+              <a class="collapse-item" href="<?= base_url('admin/data_pengguna') ?>">Data Pengguna</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-database"></i>
+            <span>Data Surat</span>
           </a>
           <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="<?= base_url('admin/surat_masuk') ?>">Surat Masuk</a>
-              <a class="collapse-item" href="<?= base_url('admin/surat_keluar') ?>">Surat Keluar Dokter</a>
-              <a class="collapse-item" href="<?= base_url('admin/disposisi') ?>">Disposisi Warga</a>
+              <a class="collapse-item" href="<?= base_url('admin/surat_keluar') ?>">Surat Keluar</a>
+              <a class="collapse-item" href="<?= base_url('admin/disposisi') ?>">Disposisi</a>
               <a class="collapse-item" href="<?= base_url('admin/izin') ?>">Surat Izin</a>
             </div>
           </div>
