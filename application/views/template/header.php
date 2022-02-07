@@ -40,7 +40,7 @@
           <div class="sidebar-brand-icon">
             <img src="<?= base_url('assets/logo2.png'); ?>" width="50" height="60" alt="Logo">
           </div>
-          <div class="sidebar-brand-text mx-3">Vaksin</div>
+          <div class="sidebar-brand-text mx-3">E-Surat</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -61,10 +61,10 @@
           </a>
           <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('admin/vaksin') ?>">Vaksin</a>
-              <a class="collapse-item" href="<?= base_url('admin/dokter') ?>">Data Dokter</a>
-              <a class="collapse-item" href="<?= base_url('admin/warga') ?>">Data Warga</a>
-              <a class="collapse-item" href="<?= base_url('admin/tindakan') ?>">Tindakan Vaksin</a>
+              <a class="collapse-item" href="<?= base_url('admin/surat_masuk') ?>">Surat Masuk</a>
+              <a class="collapse-item" href="<?= base_url('admin/surat_keluar') ?>">Surat Keluar Dokter</a>
+              <a class="collapse-item" href="<?= base_url('admin/disposisi') ?>">Disposisi Warga</a>
+              <a class="collapse-item" href="<?= base_url('admin/izin') ?>">Surat Izin</a>
             </div>
           </div>
         </li>

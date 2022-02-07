@@ -12,9 +12,9 @@
                                     <div class="p-5">
                                         <div class="text-center">
 
-                                            <img src="<?= base_url('assets/logo2.png') ?>" width="100px">
+                                            <img src="<?= base_url('assets/logo.jpg') ?>" width="100px">
                                             <br>
-
+                                            <h3>Aplikasi Surat Kementerian Agama Banjarbaru</h3>
                                             <hr>
                                             <!-- <h1 class="h4 text-gray-900 mb-4">Login</h1> -->
                                         </div>
@@ -26,7 +26,7 @@
                                         <form class="user" action="<?= base_url('auth/auth') ?>" method="POST">
                                             <div class="form-group mb-4">
                                                 <div class="form-group mb-4">
-                                                    <input type="number" class="form-control" name="nik" placeholder="No NIK">
+                                                    <input type="number" class="form-control" name="username" placeholder="Username">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-4">
@@ -38,7 +38,7 @@
                                             </button>
                                             <div class="d-flex justify-content-center mb-4 mt-3">
                                                 <small>
-                                                    <a href="<?= base_url('auth/daftar') ?>">Daftar Vaksin</a>
+
                                             </div>
                                             </small>
                                         </form>
