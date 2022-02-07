@@ -103,7 +103,7 @@
            hoverBackgroundColor: "#2e59d9",
            borderColor: "#4e73df",
            //  data statik
-           data: [4215, 5312, 6251, 7841, 9821, 14984, 14984, 14984, 14984, 14984, 14984, 14984],
+           data: [<?= $bulan1 ?>, <?= $bulan2 ?>, <?= $bulan3 ?>, <?= $bulan4 ?>, <?= $bulan5 ?>, <?= $bulan6 ?>, <?= $bulan7 ?>, <?= $bulan8 ?>, <?= $bulan9 ?>, <?= $bulan10 ?>, <?= $bulan11 ?>, <?= $bulan12 ?>],
          }],
        },
        options: {
@@ -133,7 +133,7 @@
            yAxes: [{
              ticks: {
                min: 0,
-               max: 15000,
+               max: <?= $all_bulan ?>,
                maxTicksLimit: 5,
                padding: 10,
                // Include a dollar sign in the ticks

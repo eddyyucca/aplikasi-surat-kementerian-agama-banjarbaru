@@ -69,7 +69,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-database"></i>
-            <span>Data Surat</span>
+            <span>Data Surat & Laporan</span>
           </a>
           <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -82,23 +82,7 @@
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Pengajuan" aria-expanded="true" aria-controls="Pengajuan">
-            <i class="fas fa-database"></i>
-            <span>Laporan</span>
-          </a>
-          <div id="Pengajuan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin1') ?>">Sudah Vaksin 1</a>
-              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin2') ?>">Sudah Vaksin 2</a>
-              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin3') ?>">Sudah Vaksin 3</a>
-              <a class="collapse-item" href="<?= base_url('admin/warga_gagal_vaksin') ?>">Gagal Vaksin</a>
-              <a class="collapse-item" href="<?= base_url('admin/warga_blm_vaksin') ?>">Belum Vaksin</a>
-              <a class="collapse-item" href="<?= base_url('admin/cetak_data_vaksin') ?>">Stok Vaksin</a>
-              <a class="collapse-item" href="<?= base_url('admin/cetak_dokter') ?>">Data Dokter</a>
-            </div>
-          </div>
-        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 

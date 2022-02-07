@@ -13,10 +13,10 @@ class Admin extends CI_Controller
         $this->load->model('admin_m');
         // $this->load->model('alumni_m');
 
-        // $level_akun = $this->session->userdata('level');
-        // if ($level_akun != "admin") {
-        //     return redirect('auth');
-        // }
+        $level_akun = $this->session->userdata('level');
+        if ($level_akun != "admin") {
+            return redirect('auth');
+        }
     }
 
     public function index()
@@ -24,7 +24,33 @@ class Admin extends CI_Controller
         $data['nama'] = $this->session->userdata('nama');
 
         $data['judul'] = 'Dashboard';
-        // $data['data'] = $this->admin_m->get_all_vaksin();
+        $bulan1 = '01';
+        $bulan2 = '02';
+        $bulan3 = '03';
+        $bulan4 = '04';
+        $bulan5 = '05';
+        $bulan6 = '06';
+        $bulan7 = '07';
+        $bulan8 = '08';
+        $bulan9 = '09';
+        $bulan10 = '10';
+        $bulan11 = '11';
+        $bulan12 = '12';
+
+        $data['bulan1'] = $this->admin_m->surat_masuk_st($bulan1);
+        $data['bulan2'] = $this->admin_m->surat_masuk_st($bulan2);
+        $data['bulan3'] = $this->admin_m->surat_masuk_st($bulan3);
+        $data['bulan4'] = $this->admin_m->surat_masuk_st($bulan4);
+        $data['bulan5'] = $this->admin_m->surat_masuk_st($bulan5);
+        $data['bulan6'] = $this->admin_m->surat_masuk_st($bulan6);
+        $data['bulan7'] = $this->admin_m->surat_masuk_st($bulan7);
+        $data['bulan8'] = $this->admin_m->surat_masuk_st($bulan8);
+        $data['bulan9'] = $this->admin_m->surat_masuk_st($bulan9);
+        $data['bulan10'] = $this->admin_m->surat_masuk_st($bulan10);
+        $data['bulan11'] = $this->admin_m->surat_masuk_st($bulan11);
+        $data['bulan12'] = $this->admin_m->surat_masuk_st($bulan12);
+
+        $data['all_bulan'] = $this->admin_m->surat_masuk_all();
 
         $this->load->view('template/header', $data);
         $this->load->view('admin/index', $data);
@@ -301,7 +327,7 @@ class Admin extends CI_Controller
         $data['judul'] = 'Data Surat Masuk';
         $data['nama'] = $this->session->userdata('username');
         $data['data'] = $this->admin_m->get_all_suratmasuk();
-
+        $data['id_disposisi'] = false;
         $data['disposisi'] = $this->admin_m->get_all_disposisi();
         $this->load->view('template/header', $data);
         $this->load->view('admin/surat_disposisi/surat_disposisi', $data);
@@ -318,10 +344,24 @@ class Admin extends CI_Controller
         $this->load->view('admin/surat_disposisi/cetak_data_disposisi', $data);
         // $this->load->view('template/footer');
     }
+    public function cetak_disposisi_bagian()
+    {
+        $data['judul'] = 'Data Surat Masuk';
+        $data['nama'] = $this->session->userdata('username');
+        // $data['data'] = $this->admin_m->get_all_suratmasuk();
+        $id_disposisi = $this->input->post('id_disposisi');
+
+        $data['data'] = $this->admin_m->get_all_suratmasuk_disposisi($id_disposisi);
+        $data['disposisi'] = $this->admin_m->get_all_disposisi();
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_disposisi/cetak_data_disposisi', $data);
+        // $this->load->view('template/footer');
+    }
     public function disposisi_cari()
     {
         $id_disposisi = $this->input->post('disposisi');
-        $data['judul'] = 'Data Surat Masuk';
+        $data['id_disposisi'] = $this->input->post('disposisi');
+        $data['judul'] = 'Data Disposisi';
         $data['nama'] = $this->session->userdata('username');
         $data['data'] = $this->admin_m->get_all_suratmasuk_disposisi($id_disposisi);
         $data['disposisi'] = $this->admin_m->get_all_disposisi();

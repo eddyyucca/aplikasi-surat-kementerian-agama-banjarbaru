@@ -3,9 +3,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin_m extends CI_Model
 {
-    public function jumlah_alumni()
+    public function surat_masuk_st($bulan)
     {
-        $query = $this->db->get('alumni');
+        $this->db->where('bulan_smasuk', $bulan);
+
+        $query = $this->db->get('surat_masuk');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+    public function surat_masuk_all()
+    {
+        $query = $this->db->get('surat_masuk');
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {

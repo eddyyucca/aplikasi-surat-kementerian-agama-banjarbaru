@@ -9,11 +9,11 @@ class User extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('user_m');
 
-        // $level_akun = $this->session->userdata('level');
-        // if ($level_akun != "user") {
+        $level_akun = $this->session->userdata('level');
+        if ($level_akun != "user") {
 
-        //     return redirect('auth');
-        // }
+            return redirect('auth');
+        }
     }
     public function index()
     {

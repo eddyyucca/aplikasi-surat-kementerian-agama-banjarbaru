@@ -7,7 +7,14 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/cetak_disposisi') ?>" class="btn btn-primary">Cetak Surat Disposisi</a>
+                    <?php if ($id_disposisi == false) { ?>
+                        <a href="<?= base_url('admin/cetak_disposisi') ?>" class="btn btn-primary">Cetak Surat Disposisi</a>
+                    <?php } else { ?>
+                        <form action="<?= base_url('admin/cetak_disposisi_bagian') ?>" method="post">
+                            <input type="hidden" name="id_disposisi" value="<?= $id_disposisi ?>">
+                            <button class="btn btn-primary" type="submit" id="button-addon2">Cetak Surat Disposisi Bagian</button>
+                        </form>
+                    <?php  } ?>
                     <hr>
                     <form action="<?= base_url('admin/disposisi_cari') ?>" method="post">
                         <div class="input-group mb-3 col-6">

@@ -32,7 +32,7 @@ class Auth extends CI_Controller
 
     public function auth()
     {
-        $this->form_validation->set_rules('nik', 'NIK', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         if ($this->form_validation->run() == FALSE) {
             $data['data'] = false;
@@ -41,15 +41,13 @@ class Auth extends CI_Controller
             $this->load->view('auth/index', $data);
             $this->load->view('auth/template_auth/footer');
         } else {
-            $nik = $this->input->post('nik');
+            $username = $this->input->post('username');
             $password =  md5($this->input->post('password'));
-            $cek = $this->auth_m->login($nik, $password);
+            $cek = $this->auth_m->login($username, $password);
             if ($cek == true) {
                 foreach ($cek as $row);
-                $this->session->set_userdata('telpon', $row->telpon);
-                $this->session->set_userdata('nama', $row->nama);
-                $this->session->set_userdata('id_warga', $row->id_warga);
-                $this->session->set_userdata('nik', $row->nik);
+                $this->session->set_userdata('nama', $row->username);
+                $this->session->set_userdata('id_warga', $row->id_akun);
                 $this->session->set_userdata('level', $row->level);
                 if ($row->level == "admin") {
                     redirect('admin');
