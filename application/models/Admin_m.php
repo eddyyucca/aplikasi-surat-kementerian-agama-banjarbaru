@@ -14,6 +14,26 @@ class Admin_m extends CI_Model
             return 0;
         }
     }
+    public function surat_keluar_st($bulan)
+    {
+        $this->db->where('bulan_skeluar', $bulan);
+
+        $query = $this->db->get('surat_keluar');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+    public function no_surat()
+    {
+        $query = $this->db->get('surat_keluar');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
     public function surat_masuk_all()
     {
         $query = $this->db->get('surat_masuk');
@@ -23,21 +43,26 @@ class Admin_m extends CI_Model
             return 0;
         }
     }
-    public function jumlah_lowongan()
+    public function surat_keluar_all()
     {
-
-        $query = $this->db->get('lowongan');
+        $query = $this->db->get('surat_keluar');
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {
             return 0;
         }
     }
+
     public function get_all_suratmasuk()
     {
         $this->db->join('disposisi', 'disposisi.id_disposisi = surat_masuk.disposisi', 'left');
-
+        $this->db->order_by('id_surat_masuk', 'DESC');
         return   $this->db->get('surat_masuk')->result();
+    }
+    public function get_all_suratkeluar()
+    {
+        $this->db->order_by('id_surat_keluar', 'DESC');
+        return   $this->db->get('surat_keluar')->result();
     }
     public function get_all_akun()
     {
@@ -56,6 +81,11 @@ class Admin_m extends CI_Model
         $this->db->join('disposisi', 'disposisi.id_disposisi = surat_masuk.disposisi', 'left');
 
         return   $this->db->get('surat_masuk')->result();
+    }
+    public function get_all_suratkeluar_bulan($bulan)
+    {
+        $this->db->where('bulan_skeluar', $bulan);
+        return   $this->db->get('surat_keluar')->result();
     }
     public function get_all_suratmasuk_disposisi($id_disposisi)
     {

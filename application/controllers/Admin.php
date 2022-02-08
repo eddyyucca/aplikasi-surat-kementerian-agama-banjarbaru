@@ -52,6 +52,33 @@ class Admin extends CI_Controller
 
         $data['all_bulan'] = $this->admin_m->surat_masuk_all();
 
+        $bulan1 = '01';
+        $bulan2 = '02';
+        $bulan3 = '03';
+        $bulan4 = '04';
+        $bulan5 = '05';
+        $bulan6 = '06';
+        $bulan7 = '07';
+        $bulan8 = '08';
+        $bulan9 = '09';
+        $bulan10 = '10';
+        $bulan11 = '11';
+        $bulan12 = '12';
+
+        $data['kbulan1'] = $this->admin_m->surat_keluar_st($bulan1);
+        $data['kbulan2'] = $this->admin_m->surat_keluar_st($bulan2);
+        $data['kbulan3'] = $this->admin_m->surat_keluar_st($bulan3);
+        $data['kbulan4'] = $this->admin_m->surat_keluar_st($bulan4);
+        $data['kbulan5'] = $this->admin_m->surat_keluar_st($bulan5);
+        $data['kbulan6'] = $this->admin_m->surat_keluar_st($bulan6);
+        $data['kbulan7'] = $this->admin_m->surat_keluar_st($bulan7);
+        $data['kbulan8'] = $this->admin_m->surat_keluar_st($bulan8);
+        $data['kbulan9'] = $this->admin_m->surat_keluar_st($bulan9);
+        $data['kbulan10'] = $this->admin_m->surat_keluar_st($bulan10);
+        $data['kbulan11'] = $this->admin_m->surat_keluar_st($bulan11);
+        $data['kbulan12'] = $this->admin_m->surat_keluar_st($bulan12);
+        $data['kall_bulan'] = $this->admin_m->surat_keluar_all();
+
         $this->load->view('template/header', $data);
         $this->load->view('admin/index', $data);
         $this->load->view('template/footer', $data);
@@ -265,7 +292,7 @@ class Admin extends CI_Controller
 
         $this->load->library('upload', $config);
         // script upload file 1
-        $this->upload->do_upload('foto');
+        $this->upload->do_upload('file_surat');
         $x = $this->upload->data();
 
         $data = array(
@@ -311,15 +338,85 @@ class Admin extends CI_Controller
         $this->db->update('surat_masuk', $data);
         return redirect('admin/surat_masuk');
     }
+    public function proses_surat_keluar()
+    {
+        $config['upload_path']   = './assets/file/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+        $config['remove_space'] = TRUE;
+        //$config['max_size']      = 100; 
+        //$config['max_width']     = 1024; 
+        //$config['max_height']    = 768;  
 
-    public function surat_keluar()
+        $this->load->library('upload', $config);
+        // script upload file 1
+        $this->upload->do_upload('file_surat');
+        $x = $this->upload->data();
+
+        $data = array(
+            'tanggal_surat' => $this->input->post('tanggal_surat'),
+            'tujuan_surat' => $this->input->post('tujuan_surat'),
+            'nomor_surat' => $this->input->post('no_surat'),
+            'perihal' => $this->input->post('perihal'),
+            'file_surat' => $x["orig_name"],
+            'bulan_skeluar' => substr($this->input->post('tanggal_surat'), 5, 2),
+        );
+        $this->db->insert('surat_keluar', $data);
+        return redirect('admin/surat_keluar');
+    }
+
+    // 
+    public function cetak_surat_keluar()
     {
         $data['judul'] = 'Data Surat Masuk';
         $data['nama'] = $this->session->userdata('username');
-        $data['data'] = $this->admin_m->get_all_suratmasuk();
-        $data['disposisi'] = $this->admin_m->get_all_disposisi();
+        $data['data'] = $this->admin_m->get_all_suratkeluar();
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_keluar/cetak_data_suratkeluar', $data);
+        // $this->load->view('template/footer');
+    }
+    public function cetak_surat_keluar_bulan()
+    {
+        $data['judul'] = 'Data Surat Masuk';
+        $data['nama'] = $this->session->userdata('username');
+        $bulan = $this->input->post('bulan');
+        $data['data'] = $this->admin_m->get_all_suratkeluar_bulan($bulan);
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_keluar/cetak_data_suratkeluar', $data);
+        // $this->load->view('template/footer');
+    }
+    public function caritanggal_sk()
+    {
+        $data['judul'] = 'Data Surat Masuk';
+        $data['nama'] = $this->session->userdata('username');
+        $bulan = $this->input->post('bulan');
+        $data['bulan'] = $this->input->post('bulan');
+        $data['data'] = $this->admin_m->get_all_suratkeluar_bulan($bulan);
         $this->load->view('template/header', $data);
         $this->load->view('admin/surat_keluar/data_suratkeluar', $data);
+        $this->load->view('template/footer');
+    }
+    // 
+
+    public function surat_keluar()
+    {
+        $data['judul'] = 'Data Surat Keluar';
+        $data['nama'] = $this->session->userdata('username');
+        $data['data'] = $this->admin_m->get_all_suratkeluar();
+        $data['disposisi'] = $this->admin_m->get_all_disposisi();
+        $data['bulan'] = false;
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_keluar/data_suratkeluar', $data);
+        $this->load->view('template/footer');
+    }
+    public function tambah_surat_keluar()
+    {
+
+        $data['judul'] = 'Data Surat Keluar';
+        $data['nama'] = $this->session->userdata('username');
+        $data['data'] = $this->admin_m->get_all_suratkeluar();
+        $data['no_surat'] = $this->admin_m->no_surat();
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_keluar/input_suratkeluar', $data);
         $this->load->view('template/footer');
     }
     public function disposisi()

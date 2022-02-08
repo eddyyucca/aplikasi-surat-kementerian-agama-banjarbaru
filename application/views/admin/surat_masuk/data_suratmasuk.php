@@ -75,7 +75,7 @@
                                 <td align="center">
                                     <a href="<?= base_url('admin/hapus_suratmasuk/') . $x->id_surat_masuk; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/edit_suratmasuk/') . $x->id_surat_masuk; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?= base_url('admin/lihat_data/') . $x->id_surat_masuk; ?>" class="btn btn-success">Lihat Data</a>
+                                    <a href="<?= base_url('assets/file/') . $x->file_surat; ?>" class="btn btn-success">Lihat Data</a>
                                 </td>
                             </tr>
                         <?php } ?>

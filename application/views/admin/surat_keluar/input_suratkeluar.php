@@ -12,50 +12,39 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header">
-                                                Surat Masuk
+                                                Surat Keluar
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_surat_masuk')  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_surat_keluar')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
-                                                                id_surat_masuk nama_surat no_surat tgl_s_masuk tgl_t_sm asal_surat_masuk perihal file_surat disposisi bulan_smasuk
+                                                                <tr>
+                                                                    <?php
 
-                                                                <tr>
-                                                                    <td width=20%>Nama Surat</td>
-                                                                    <td><input type="text" name="nama_surat" class="form-control" required placeholder="Nama Surat"></td>
-                                                                </tr>
-                                                                <tr>
+                                                                    $nomor = "001" + $no_surat;
+                                                                    ?>
                                                                     <td width=20%>Nomor Surat</td>
-                                                                    <td><input type="text" name="no_surat" class="form-control" required placeholder="Nomor Surat"></td>
+                                                                    <td><input type="text" name="no_surat" class="form-control" value="mag/123/<?= date('y') . "/00" . $nomor ?>" disabled>
+
+                                                                        <input type="hidden" name="no_surat" value="mag/123/<?= date('y') . "/" . $nomor ?>">
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width=20%>Asal Surat</td>
-                                                                    <td><input type="text" name="asal_surat_masuk" class="form-control" required placeholder="Asal Surat"></td>
+                                                                    <td width=20%>Tanggal Surat Keluar</td>
+                                                                    <td><input type="date" name="tanggal_surat" class="form-control" required></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width=20%>Tanggal Surat Masuk</td>
-                                                                    <td><input type="date" name="tgl_s_masuk" class="form-control" required placeholder="Nomor Surat Masuk"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Tanggal Terima Surat</td>
-                                                                    <td><input type="date" name="tgl_t_sm" class="form-control" required placeholder="Tanggal Terima Surat"></td>
+                                                                    <td width=20%>Tujuan Surat</td>
+                                                                    <td><input type="text" name="tujuan_surat" class="form-control" required placeholder="Tujuan Surat"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Perihal</td>
                                                                     <td><textarea class="form-control" name="perihal" rows="5"></textarea></td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>Disposisi</td>
-                                                                    <td><select name="disposisi" class="form-control">
-                                                                            <option value="">--PILIH DISPOSISI--</option>
-                                                                            <?php foreach ($disposisi as $dis) { ?>
-                                                                                <option value="<?= $dis->id_disposisi ?>"><?= $dis->nama_disposisi ?></option>
-                                                                            <?php } ?>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
+
+
                                                                 <tr>
                                                                     <td>File</td>
                                                                     <td>
