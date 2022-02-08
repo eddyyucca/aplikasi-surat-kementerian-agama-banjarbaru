@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Feb 2022 pada 14.04
+-- Waktu pembuatan: 08 Feb 2022 pada 16.29
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -31,16 +31,21 @@ CREATE TABLE `akun` (
   `id_akun` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `level` enum('admin','user') NOT NULL
+  `level` enum('admin','user') NOT NULL,
+  `bidang` varchar(11) NOT NULL,
+  `jabatan` varchar(11) NOT NULL,
+  `nama` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `akun`
 --
 
-INSERT INTO `akun` (`id_akun`, `username`, `password`, `level`) VALUES
-(1, 'admin666', 'fae0b27c451c728867a567e8c1bb4e53', 'admin'),
-(3, '123', '202cb962ac59075b964b07152d234b70', 'user');
+INSERT INTO `akun` (`id_akun`, `username`, `password`, `level`, `bidang`, `jabatan`, `nama`) VALUES
+(1, 'admin666', 'fae0b27c451c728867a567e8c1bb4e53', 'admin', 'tes', 'tes2', 'tes3'),
+(3, '123', '202cb962ac59075b964b07152d234b70', 'user', 'tes', 'tes2', 'tes3'),
+(4, 'nadi', 'a6d91358169c3540346213cbcb439322', 'user', 'Pengadaan', 'Kepala', 'nadi'),
+(5, 'eddy', '5aa8fed9741d33c63868a87f1af05ab7', 'user', 'Pengadaan', 'Kepala', 'Eddy Adha Saputra');
 
 -- --------------------------------------------------------
 
@@ -59,7 +64,31 @@ CREATE TABLE `disposisi` (
 
 INSERT INTO `disposisi` (`id_disposisi`, `nama_disposisi`) VALUES
 (1, 'ESDM 2'),
-(3, 'KEPEGAWAIAN');
+(3, 'KEPEGAWAIAN'),
+(4, 'uji 1');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `surat_izin`
+--
+
+CREATE TABLE `surat_izin` (
+  `id_surat_izin` int(11) NOT NULL,
+  `keperluan` varchar(100) NOT NULL,
+  `dari_tanggal` varchar(50) NOT NULL,
+  `sampai_tanggal` varchar(50) NOT NULL,
+  `akun_izin` varchar(11) NOT NULL,
+  `bulan_si` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_izin`
+--
+
+INSERT INTO `surat_izin` (`id_surat_izin`, `keperluan`, `dari_tanggal`, `sampai_tanggal`, `akun_izin`, `bulan_si`) VALUES
+(1, 'Cuti tahunan', '2022-02-08', '2022-02-09', '1', '02'),
+(3, 'Cuti tahunan', '2022-03-08', '2022-03-09', '1', '03');
 
 -- --------------------------------------------------------
 
@@ -117,7 +146,8 @@ INSERT INTO `surat_masuk` (`id_surat_masuk`, `nama_surat`, `no_surat`, `tgl_s_ma
 (4, 'www', 'w', '2022-02-18', '2022-02-18', 'w', 'w', '', '1', '-18'),
 (5, 'pp', 'p', '2022-02-09', '2022-02-25', 'p', 'p', '', '3', '02'),
 (6, 'asas', 'asas', '2022-10-08', '2022-10-22', 'sasa', 'sa', '', '1', '10'),
-(7, 'zzzz', 'zzzz', '2022-02-08', '2022-02-08', 'zzzz', 'zzz', '2111NA7796.pdf', '1', '02');
+(7, 'zzzz', 'zzzz', '2022-02-08', '2022-02-08', 'zzzz', 'zzz', '2111NA7796.pdf', '1', '02'),
+(8, 'tessss', 'tttt', '2022-02-08', '2022-02-10', 'tttt', 'tttt', 'ARTIKEL_EDDY_ADA_SAPUTRA.pdf', '1', '02');
 
 --
 -- Indexes for dumped tables
@@ -134,6 +164,12 @@ ALTER TABLE `akun`
 --
 ALTER TABLE `disposisi`
   ADD PRIMARY KEY (`id_disposisi`);
+
+--
+-- Indeks untuk tabel `surat_izin`
+--
+ALTER TABLE `surat_izin`
+  ADD PRIMARY KEY (`id_surat_izin`);
 
 --
 -- Indeks untuk tabel `surat_keluar`
@@ -155,13 +191,19 @@ ALTER TABLE `surat_masuk`
 -- AUTO_INCREMENT untuk tabel `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `id_akun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_akun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `disposisi`
 --
 ALTER TABLE `disposisi`
-  MODIFY `id_disposisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_disposisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `surat_izin`
+--
+ALTER TABLE `surat_izin`
+  MODIFY `id_surat_izin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_keluar`
@@ -173,7 +215,7 @@ ALTER TABLE `surat_keluar`
 -- AUTO_INCREMENT untuk tabel `surat_masuk`
 --
 ALTER TABLE `surat_masuk`
-  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
