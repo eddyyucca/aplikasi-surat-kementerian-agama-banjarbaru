@@ -36,11 +36,11 @@
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user') ?>">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
           <div class="sidebar-brand-icon">
             <img src="<?= base_url('assets/logo666.png'); ?>" width="50" height="60" alt="Logo">
           </div>
-          <div class="sidebar-brand-text mx-3">Vaksin</div>
+          <div class="sidebar-brand-text mx-3">E-Surat</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -53,31 +53,36 @@
           Interface
         </div>
         <!-- Nav Item - Pages Collapse Menu -->
-
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#master" aria-expanded="true" aria-controls="master">
+            <i class="fas fa-database"></i>
+            <span>Data Master</span>
+          </a>
+          <div id="master" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="<?= base_url('user/data_disposisi') ?>">Data Disposisi</a>
+              <!-- <a class="collapse-item" href="<?= base_url('user/data_pengguna') ?>">Data Pengguna</a> -->
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-database"></i>
+            <span>Data Surat & Laporan</span>
+          </a>
+          <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="<?= base_url('user/surat_masuk') ?>">Surat Masuk</a>
+              <a class="collapse-item" href="<?= base_url('user/surat_keluar') ?>">Surat Keluar</a>
+              <a class="collapse-item" href="<?= base_url('user/disposisi') ?>">Disposisi</a>
+              <a class="collapse-item" href="<?= base_url('user/surat_izin') ?>">Surat Izin</a>
+            </div>
+          </div>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Password" aria-expanded="true" aria-controls="Password">
-            <i class="fas fa-database"></i>
-            <span>Profil</span>
-          </a>
-          <div id="Password" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('user/ubah_password') ?>">Ubah Password</a>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#loker" aria-expanded="true" aria-controls="loker">
-            <i class="fas fa-database"></i>
-            <span>Pengajuan Vaksin</span>
-          </a>
-          <div id="loker" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('user/daftar_vaksin') ?>">Daftar Vaksin</a>
-            </div>
-          </div>
-        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 

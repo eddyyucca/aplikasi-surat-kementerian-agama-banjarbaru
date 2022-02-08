@@ -47,7 +47,7 @@ class Auth extends CI_Controller
             if ($cek == true) {
                 foreach ($cek as $row);
                 $this->session->set_userdata('nama', $row->username);
-                $this->session->set_userdata('id_warga', $row->id_akun);
+                $this->session->set_userdata('id_akun', $row->id_akun);
                 $this->session->set_userdata('level', $row->level);
                 if ($row->level == "admin") {
                     redirect('admin');

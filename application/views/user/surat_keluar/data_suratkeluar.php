@@ -2,23 +2,18 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold ">Data Surat Masuk</h6>
+            <h6 class="m-0 font-weight-bold ">Data Surat Keluar</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/tambah_surat_izin') ?>" class="btn btn-primary">Tambah Surat Izin</a>
+                    <a href="<?= base_url('user/tambah_surat_keluar') ?>" class="btn btn-primary">Tambah Surat Keluar</a>
 
                     <?php if ($bulan == false) { ?>
-                        <a href="<?= base_url('admin/cetak_surat_izin') ?>" class="btn btn-primary">Cetak Surat Masuk</a>
+                        <a href="<?= base_url('user/cetak_surat_keluar') ?>" class="btn btn-primary">Cetak Surat Keluar</a>
                         <hr>
-                        <form action="<?= base_url('admin/cari_surat_izin') ?>" method="post">
+                        <form action="<?= base_url('user/caritanggal_sk') ?>" method="post">
                             <div class="input-group mb-3 col-6">
-                                <select name="keperluan" class="form-control">
-                                    <option value="0">--PILIH PERIHAL--</option>
-                                    <option value="Cuti tahunan">Cuti Tahunan</option>
-                                    <option value="Cuti Melahirkan">Cuti Melahirkan</option>
-                                </select>
                                 <select name="bulan" class="form-control">
                                     <option value="00">--PILIH BULAN--</option>
                                     <option value="01">--Januari--</option>
@@ -42,10 +37,9 @@
                         </form>
                     <?php  } else { ?>
                         <hr>
-                        <form action="<?= base_url('admin/cetak_surat_izin_keperluan') ?>" method="post">
+                        <form action="<?= base_url('user/cetak_surat_keluar_bulan') ?>" method="post">
                             <input type="hidden" name="bulan" value="<?= $bulan ?>">
-                            <input type="hidden" name="keperluan" value="<?= $keperluan ?>">
-                            <button class="btn btn-primary" type="submit" id="button-addon2">Cetak Surat izin</button>
+                            <button class="btn btn-primary" type="submit" id="button-addon2">Cetak Surat Keluar</button>
                         </form>
                     <?php } ?>
 
@@ -55,13 +49,11 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Bidang</th>
-                            <th>Jabatan</th>
-                            <th>Keperluan</th>
-                            <th>Dari Tanggal</th>
-                            <th>Sampai Tanggal</th>
-                            <th>aksi</th>
+                            <th>Nomor Surat</th>
+                            <th>Perihal</th>
+                            <th>Tanggal Surat</th>
+                            <th>Tujuan Surat</th>
+                            <!-- <th>aksi</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -70,16 +62,16 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nama; ?></td>
-                                <td><?= $x->bidang; ?></td>
-                                <td><?= $x->jabatan; ?></td>
-                                <td><?= $x->keperluan; ?></td>
-                                <td><?= $x->dari_tanggal; ?></td>
-                                <td><?= $x->sampai_tanggal; ?></td>
-                                <td align="center">
-                                    <a href="<?= base_url('admin/hapus_suratizin/') . $x->id_surat_izin; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-                                    <!-- <a href="<?= base_url('admin/edit_suratmasuk/') . $x->id_surat_izin; ?>" class="btn btn-primary">Edit</a> -->
-                                </td>
+                                <td><?= $x->nomor_surat; ?></td>
+                                <td><?= $x->perihal; ?></td>
+                                <td><?= $x->tanggal_surat; ?></td>
+                                <td><?= $x->tujuan_surat; ?></td>
+
+                                <!-- <td align="center">
+                                    <a href="<?= base_url('user/hapus_suratkeluar/') . $x->id_surat_keluar; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('user/edit_suratkeluar/') . $x->id_surat_keluar; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('assets/file/') . $x->file_surat; ?>" class="btn btn-success">Lihat Data</a>
+                                </td> -->
                             </tr>
                         <?php } ?>
                     </tbody>

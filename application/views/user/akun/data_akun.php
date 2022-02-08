@@ -7,8 +7,8 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/tambah_akun') ?>" class="btn btn-primary">Tambah Akun</a>
-                    <hr>
+                    <!-- <a href="<?= base_url('user/tambah_akun') ?>" class="btn btn-primary">Tambah Akun</a>
+                    <hr> -->
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -18,7 +18,7 @@
                             <th>Nama</th>
                             <th>Bidang</th>
                             <th>Jabatan</th>
-                            <th>aksi</th>
+                            <!-- <th>aksi</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -31,18 +31,18 @@
                                 <td><?= $x->nama; ?></td>
                                 <td><?= $x->bidang; ?></td>
                                 <td><?= $x->jabatan; ?></td>
-                                <td align="center">
-                                    <a href="<?= base_url('admin/hapus_akun/') . $x->id_akun; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_akun/') . $x->id_akun; ?>" class="btn btn-primary">Edit</a>
+                                <!-- <td align="center"> -->
+                                <!-- <a href="<?= base_url('user/hapus_akun/') . $x->id_akun; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('user/edit_akun/') . $x->id_akun; ?>" class="btn btn-primary">Edit</a>
                                     <?php if ($x->level == "user") { ?>
-                                        <a href="<?= base_url('admin/ubah_admin/') . $x->id_akun; ?>" class="btn btn-primary">Ubah Admin</a>
+                                        <a href="<?= base_url('user/ubah_admin/') . $x->id_akun; ?>" class="btn btn-primary">Ubah Admin</a>
 
                                     <?php } else { ?>
-                                        <a href="<?= base_url('admin/ubah_user/') . $x->id_akun; ?>" class="btn btn-primary">Ubah User</a>
+                                        <a href="<?= base_url('user/ubah_user/') . $x->id_akun; ?>" class="btn btn-primary">Ubah User</a>
 
                                     <?php } ?>
 
-                                </td>
+                                </td> -->
                             </tr>
                         <?php } ?>
                     </tbody>

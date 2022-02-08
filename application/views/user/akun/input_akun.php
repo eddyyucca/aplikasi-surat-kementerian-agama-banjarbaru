@@ -18,23 +18,23 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_akun/') . $data->id_akun ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('user/proses_tambah_akun')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>Username</td>
-                                                                    <td><input type="text" name="username" value="<?= $data->username ?>" class="form-control" required placeholder="Username"></td>
+                                                                    <td><input type="text" name="username" class="form-control" required placeholder="Username"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Nama Lengkap</td>
-                                                                    <td><input type="text" name="nama" value="<?= $data->nama ?>" class="form-control" required placeholder="Nama Lengkap"></td>
+                                                                    <td><input type="text" name="nama" class="form-control" required placeholder="Nama Lengkap"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Bidang</td>
-                                                                    <td><input type="text" name="bidang" value="<?= $data->bidang ?>" class="form-control" required placeholder="Bidang"></td>
+                                                                    <td><input type="text" name="bidang" class="form-control" required placeholder="Bidang"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Jabatan</td>
-                                                                    <td><input type="text" name="jabatan" value="<?= $data->jabatan ?>" class="form-control" required placeholder="Jabatan"></td>
+                                                                    <td><input type="text" name="jabatan" class="form-control" required placeholder="Jabatan"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Password</td>

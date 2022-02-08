@@ -76,7 +76,7 @@
               <a class="collapse-item" href="<?= base_url('admin/surat_masuk') ?>">Surat Masuk</a>
               <a class="collapse-item" href="<?= base_url('admin/surat_keluar') ?>">Surat Keluar</a>
               <a class="collapse-item" href="<?= base_url('admin/disposisi') ?>">Disposisi</a>
-              <a class="collapse-item" href="<?= base_url('admin/izin') ?>">Surat Izin</a>
+              <a class="collapse-item" href="<?= base_url('admin/surat_izin') ?>">Surat Izin</a>
             </div>
           </div>
         </li>

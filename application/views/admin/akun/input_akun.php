@@ -25,6 +25,18 @@
                                                                     <td><input type="text" name="username" class="form-control" required placeholder="Username"></td>
                                                                 </tr>
                                                                 <tr>
+                                                                    <td width=20%>Nama Lengkap</td>
+                                                                    <td><input type="text" name="nama" class="form-control" required placeholder="Nama Lengkap"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=20%>Bidang</td>
+                                                                    <td><input type="text" name="bidang" class="form-control" required placeholder="Bidang"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=20%>Jabatan</td>
+                                                                    <td><input type="text" name="jabatan" class="form-control" required placeholder="Jabatan"></td>
+                                                                </tr>
+                                                                <tr>
                                                                     <td width=20%>Password</td>
                                                                     <td><input type="text" name="password" class="form-control" required placeholder="Password"></td>
                                                                 </tr>

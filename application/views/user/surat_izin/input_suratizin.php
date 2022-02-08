@@ -12,33 +12,30 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header">
-                                                Akun
+                                                Surat Izin
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_akun/') . $data->id_akun ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('user/proses_surat_izin')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
-                                                                    <td width=20%>Username</td>
-                                                                    <td><input type="text" name="username" value="<?= $data->username ?>" class="form-control" required placeholder="Username"></td>
+                                                                    <td width=20%>Nama Surat</td>
+                                                                    <td><select name="keperluan" class="form-control">
+                                                                            <option value="0">--PILIH Perihal--</option>
+                                                                            <option value="Cuti tahunan">Cuti Tahunan</option>
+                                                                            <option value="Cuti Melahirkan">Cuti Melahirkan</option>
+                                                                        </select>
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width=20%>Nama Lengkap</td>
-                                                                    <td><input type="text" name="nama" value="<?= $data->nama ?>" class="form-control" required placeholder="Nama Lengkap"></td>
+                                                                    <td width=20%>Dari Tanggal</td>
+                                                                    <td><input type="date" name="dari_tanggal" class="form-control" required placeholder="Dari Tanggal"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width=20%>Bidang</td>
-                                                                    <td><input type="text" name="bidang" value="<?= $data->bidang ?>" class="form-control" required placeholder="Bidang"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Jabatan</td>
-                                                                    <td><input type="text" name="jabatan" value="<?= $data->jabatan ?>" class="form-control" required placeholder="Jabatan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Password</td>
-                                                                    <td><input type="text" name="password" class="form-control" required placeholder="Password"></td>
+                                                                    <td width=20%>Sampai Tanggal</td>
+                                                                    <td><input type="date" name="sampai_tanggal" class="form-control" required placeholder="Sampai Tanggal"></td>
                                                                 </tr>
 
                                                                 <tr>

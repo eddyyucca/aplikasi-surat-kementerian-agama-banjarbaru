@@ -12,57 +12,32 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header">
-                                                Surat Masuk
+                                                Surat Izin
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_surat_masuk')  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_surat_izin')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>Nama Surat</td>
-                                                                    <td><input type="text" name="nama_surat" class="form-control" required placeholder="Nama Surat"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Nomor Surat</td>
-                                                                    <td><input type="text" name="no_surat" class="form-control" required placeholder="Nomor Surat"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Asal Surat</td>
-                                                                    <td><input type="text" name="asal_surat_masuk" class="form-control" required placeholder="Asal Surat"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Tanggal Surat Masuk</td>
-                                                                    <td><input type="date" name="tgl_s_masuk" class="form-control" required placeholder="Nomor Surat Masuk"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Tanggal Terima Surat</td>
-                                                                    <td><input type="date" name="tgl_t_sm" class="form-control" required placeholder="Tanggal Terima Surat"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Perihal</td>
-                                                                    <td><textarea class="form-control" name="perihal" rows="5"></textarea></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Disposisi</td>
-                                                                    <td><select name="disposisi" class="form-control">
-                                                                            <option value="">--PILIH DISPOSISI--</option>
-                                                                            <?php foreach ($disposisi as $dis) { ?>
-                                                                                <option value="<?= $dis->id_disposisi ?>"><?= $dis->nama_disposisi ?></option>
-                                                                            <?php } ?>
+                                                                    <td><select name="keperluan" class="form-control">
+                                                                            <option value="0">--PILIH Perihal--</option>
+                                                                            <option value="Cuti tahunan">Cuti Tahunan</option>
+                                                                            <option value="Cuti Melahirkan">Cuti Melahirkan</option>
                                                                         </select>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>File</td>
-                                                                    <td>
-
-                                                                        <div class="custom-file">
-                                                                            <input type="file" name="file_surat" class="">
-                                                                        </div>
-                                                                    </td>
+                                                                    <td width=20%>Dari Tanggal</td>
+                                                                    <td><input type="date" name="dari_tanggal" class="form-control" required placeholder="Dari Tanggal"></td>
                                                                 </tr>
+                                                                <tr>
+                                                                    <td width=20%>Sampai Tanggal</td>
+                                                                    <td><input type="date" name="sampai_tanggal" class="form-control" required placeholder="Sampai Tanggal"></td>
+                                                                </tr>
+
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-success">Simpan</button>

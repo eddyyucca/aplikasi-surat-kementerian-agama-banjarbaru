@@ -18,7 +18,7 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_akun/') . $data->id_akun ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('user/proses_edit_akun/') . $data->id_akun ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>Username</td>

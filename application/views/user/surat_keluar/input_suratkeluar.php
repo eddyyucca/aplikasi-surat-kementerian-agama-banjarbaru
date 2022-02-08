@@ -12,35 +12,48 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header">
-                                                Akun
+                                                Surat Keluar
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_akun/') . $data->id_akun ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('user/proses_surat_keluar')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
-                                                                    <td width=20%>Username</td>
-                                                                    <td><input type="text" name="username" value="<?= $data->username ?>" class="form-control" required placeholder="Username"></td>
+                                                                    <?php
+
+                                                                    $nomor = "001" + $no_surat;
+                                                                    ?>
+                                                                    <td width=20%>Nomor Surat</td>
+                                                                    <td><input type="text" name="no_surat" class="form-control" value="mag/123/<?= date('y') . "/00" . $nomor ?>" disabled>
+
+                                                                        <input type="hidden" name="no_surat" value="mag/123/<?= date('y') . "/" . $nomor ?>">
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width=20%>Nama Lengkap</td>
-                                                                    <td><input type="text" name="nama" value="<?= $data->nama ?>" class="form-control" required placeholder="Nama Lengkap"></td>
+                                                                    <td width=20%>Tanggal Surat Keluar</td>
+                                                                    <td><input type="date" name="tanggal_surat" class="form-control" required></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width=20%>Bidang</td>
-                                                                    <td><input type="text" name="bidang" value="<?= $data->bidang ?>" class="form-control" required placeholder="Bidang"></td>
+                                                                    <td width=20%>Tujuan Surat</td>
+                                                                    <td><input type="text" name="tujuan_surat" class="form-control" required placeholder="Tujuan Surat"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width=20%>Jabatan</td>
-                                                                    <td><input type="text" name="jabatan" value="<?= $data->jabatan ?>" class="form-control" required placeholder="Jabatan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Password</td>
-                                                                    <td><input type="text" name="password" class="form-control" required placeholder="Password"></td>
+                                                                    <td width=20%>Perihal</td>
+                                                                    <td><textarea class="form-control" name="perihal" rows="5"></textarea></td>
                                                                 </tr>
 
+
+                                                                <tr>
+                                                                    <td>File</td>
+                                                                    <td>
+
+                                                                        <div class="custom-file">
+                                                                            <input type="file" name="file_surat" class="">
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-success">Simpan</button>
