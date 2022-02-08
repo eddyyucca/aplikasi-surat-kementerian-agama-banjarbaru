@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Feb 2022 pada 19.23
+-- Waktu pembuatan: 08 Feb 2022 pada 14.04
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -64,6 +64,33 @@ INSERT INTO `disposisi` (`id_disposisi`, `nama_disposisi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `surat_keluar`
+--
+
+CREATE TABLE `surat_keluar` (
+  `id_surat_keluar` int(15) NOT NULL,
+  `tanggal_surat` varchar(20) NOT NULL,
+  `tujuan_surat` varchar(255) NOT NULL,
+  `nomor_surat` varchar(255) NOT NULL,
+  `perihal` varchar(500) NOT NULL,
+  `file_surat` text NOT NULL,
+  `bulan_skeluar` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_keluar`
+--
+
+INSERT INTO `surat_keluar` (`id_surat_keluar`, `tanggal_surat`, `tujuan_surat`, `nomor_surat`, `perihal`, `file_surat`, `bulan_skeluar`) VALUES
+(1, '2021-05-24', 'Surabaya', '123/2021-SRB', 'Terima Kerjasama', '2111NA7796.pdf', '05'),
+(2, '2021-05-24', 'Surabaya', '123/2021-jkt', 'Persetujuan kerjasama', '2111NA7796.pdf', '03'),
+(3, '2021-05-26', 'Surabaya', '123/2021-jkt-90', 'Persetujuan Kerjasam', '2111NA7796.pdf', '01'),
+(4, '2022-02-08', 'sasa', 'mag/123/22/4', 'as', '2111NA7796.pdf', '02'),
+(5, '2022-02-07', 'aaaa', 'mag/123/22/5', 'aaaa', '2111NA7796.pdf', '02');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `surat_masuk`
 --
 
@@ -89,7 +116,8 @@ INSERT INTO `surat_masuk` (`id_surat_masuk`, `nama_surat`, `no_surat`, `tgl_s_ma
 (3, 'qqq', 'qqq', '2022-02-08', '2022-02-08', 'qqqq', 'qqq', '', '1', '2-08'),
 (4, 'www', 'w', '2022-02-18', '2022-02-18', 'w', 'w', '', '1', '-18'),
 (5, 'pp', 'p', '2022-02-09', '2022-02-25', 'p', 'p', '', '3', '02'),
-(6, 'asas', 'asas', '2022-10-08', '2022-10-22', 'sasa', 'sa', '', '1', '10');
+(6, 'asas', 'asas', '2022-10-08', '2022-10-22', 'sasa', 'sa', '', '1', '10'),
+(7, 'zzzz', 'zzzz', '2022-02-08', '2022-02-08', 'zzzz', 'zzz', '2111NA7796.pdf', '1', '02');
 
 --
 -- Indexes for dumped tables
@@ -106,6 +134,12 @@ ALTER TABLE `akun`
 --
 ALTER TABLE `disposisi`
   ADD PRIMARY KEY (`id_disposisi`);
+
+--
+-- Indeks untuk tabel `surat_keluar`
+--
+ALTER TABLE `surat_keluar`
+  ADD PRIMARY KEY (`id_surat_keluar`);
 
 --
 -- Indeks untuk tabel `surat_masuk`
@@ -130,10 +164,16 @@ ALTER TABLE `disposisi`
   MODIFY `id_disposisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT untuk tabel `surat_keluar`
+--
+ALTER TABLE `surat_keluar`
+  MODIFY `id_surat_keluar` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT untuk tabel `surat_masuk`
 --
 ALTER TABLE `surat_masuk`
-  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
