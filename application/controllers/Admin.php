@@ -240,6 +240,15 @@ class Admin extends CI_Controller
         $this->load->view('admin/disposisi/edit_disposisi', $data);
         $this->load->view('template/footer');
     }
+    public function edit_suratkeluar($id_surat_keluar)
+    {
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->get_row_suratkeluar($id_surat_keluar);
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_keluar/edit_suratkeluar', $data);
+        $this->load->view('template/footer');
+    }
     public function proses_tambah_disposisi()
     {
         $data = array(
@@ -293,6 +302,13 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function hapus_suratkeluar($id_surat_keluar)
+    {
+        $this->db->where('id_surat_keluar', $id_surat_keluar);
+        $this->db->delete('surat_keluar');
+        return redirect('admin/surat_keluar');
+    }
+
     public function proses_surat_masuk()
     {
         $config['upload_path']   = './assets/file/';
@@ -332,7 +348,7 @@ class Admin extends CI_Controller
 
         $this->load->library('upload', $config);
         // script upload file 1
-        $this->upload->do_upload('foto');
+        $this->upload->do_upload('file_surat');
         $x = $this->upload->data();
 
         $data = array(
@@ -350,7 +366,7 @@ class Admin extends CI_Controller
         $this->db->update('surat_masuk', $data);
         return redirect('admin/surat_masuk');
     }
-    public function proses_surat_keluar()
+    public function proses_surat_keluar($id_surat_keluar)
     {
         $config['upload_path']   = './assets/file/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
@@ -367,12 +383,14 @@ class Admin extends CI_Controller
         $data = array(
             'tanggal_surat' => $this->input->post('tanggal_surat'),
             'tujuan_surat' => $this->input->post('tujuan_surat'),
-            'nomor_surat' => $this->input->post('no_surat'),
+            // 'nomor_surat' => $this->input->post('no_surat'),
             'perihal' => $this->input->post('perihal'),
             'file_surat' => $x["orig_name"],
             'bulan_skeluar' => substr($this->input->post('tanggal_surat'), 5, 2),
         );
-        $this->db->insert('surat_keluar', $data);
+        $this->db->where('id_surat_keluar', $id_surat_keluar);
+
+        $this->db->update('surat_keluar', $data);
         return redirect('admin/surat_keluar');
     }
 

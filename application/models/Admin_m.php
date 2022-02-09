@@ -128,6 +128,11 @@ class Admin_m extends CI_Model
         $this->db->where('id_disposisi', $id_disposisi);
         return   $this->db->get('disposisi')->row();
     }
+    public function get_row_suratkeluar($id_surat_keluar)
+    {
+        $this->db->where('id_surat_keluar', $id_surat_keluar);
+        return   $this->db->get('surat_keluar')->row();
+    }
 }
 
 /* End of file alumni_m.php */

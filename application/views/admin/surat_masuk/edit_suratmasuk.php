@@ -42,7 +42,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Perihal</td>
-                                                                    <td><textarea class="form-control" name="perihal" rows="5"><?= $data->perihal ?>"</textarea></td>
+                                                                    <td><textarea class="form-control" name="perihal" rows="5"><?= $data->perihal ?></textarea></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Disposisi</td>
