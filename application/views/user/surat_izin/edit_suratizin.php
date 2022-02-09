@@ -12,7 +12,7 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header">
-                                                Surat Masuk
+                                                Surat Izin
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
