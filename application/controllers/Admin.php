@@ -592,6 +592,18 @@ class Admin extends CI_Controller
         $this->load->view('admin/surat_izin/data_suratizin', $data);
         $this->load->view('template/footer');
     }
+
+    public function cetak_surat_izin_sendiri($id_surat_izin)
+    {
+
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+
+        $data['data'] = $this->admin_m->get_all_surat_izin_s($id_surat_izin);
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_izin/cetak_suratizin_sendiri', $data);
+        // $this->load->view('template/footer');
+    }
 }
 
 /* End of file Admin.php */

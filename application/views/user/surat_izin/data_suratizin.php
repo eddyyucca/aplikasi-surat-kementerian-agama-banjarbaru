@@ -61,7 +61,7 @@
                             <th>Keperluan</th>
                             <th>Dari Tanggal</th>
                             <th>Sampai Tanggal</th>
-                            <!-- <th>aksi</th> -->
+                            <th>aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,10 +76,10 @@
                                 <td><?= $x->keperluan; ?></td>
                                 <td><?= $x->dari_tanggal; ?></td>
                                 <td><?= $x->sampai_tanggal; ?></td>
-                                <!-- <td align="center">
-                                    <a href="<?= base_url('user/hapus_suratizin/') . $x->id_surat_izin; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-                                   <a href="<?= base_url('user/edit_suratmasuk/') . $x->id_surat_izin; ?>" class="btn btn-primary">Edit</a> -->
-                                <!-- </td> -->
+                                <td align="center">
+                                    <!-- <a href="<?= base_url('user/hapus_suratizin/') . $x->id_surat_izin; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a> -->
+                                    <a href="<?= base_url('user/cetak_surat_izin_sendiri/') . $x->id_surat_izin; ?>" class="btn btn-success">Cetak</a>
+
                             </tr>
                         <?php } ?>
                     </tbody>

@@ -73,6 +73,13 @@ class Admin_m extends CI_Model
         $this->db->order_by('id_surat_izin', 'DESC');
         return   $this->db->get('surat_izin')->result();
     }
+    public function get_all_surat_izin_s($id_surat_izin)
+    {
+        $this->db->where('id_surat_izin', $id_surat_izin);
+        $this->db->join('akun', 'akun.id_akun = surat_izin.akun_izin', 'left');
+        $this->db->order_by('id_surat_izin', 'DESC');
+        return   $this->db->get('surat_izin')->row();
+    }
     public function get_all_suratkeluar()
     {
         $this->db->order_by('id_surat_keluar', 'DESC');

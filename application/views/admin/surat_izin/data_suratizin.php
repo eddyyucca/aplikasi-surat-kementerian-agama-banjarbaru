@@ -78,7 +78,7 @@
                                 <td><?= $x->sampai_tanggal; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/hapus_suratizin/') . $x->id_surat_izin; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-                                    <!-- <a href="<?= base_url('admin/edit_suratmasuk/') . $x->id_surat_izin; ?>" class="btn btn-primary">Edit</a> -->
+                                    <a href="<?= base_url('admin/cetak_surat_izin_sendiri/') . $x->id_surat_izin; ?>" class="btn btn-success">Cetak</a>
                                 </td>
                             </tr>
                         <?php } ?>
