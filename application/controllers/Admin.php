@@ -389,8 +389,33 @@ class Admin extends CI_Controller
             'bulan_skeluar' => substr($this->input->post('tanggal_surat'), 5, 2),
         );
         $this->db->where('id_surat_keluar', $id_surat_keluar);
-
         $this->db->update('surat_keluar', $data);
+        return redirect('admin/surat_keluar');
+    }
+
+    public function proses_surat_keluar_baru()
+    {
+        $config['upload_path']   = './assets/file/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+        $config['remove_space'] = TRUE;
+        //$config['max_size']      = 100; 
+        //$config['max_width']     = 1024; 
+        //$config['max_height']    = 768;  
+
+        $this->load->library('upload', $config);
+        // script upload file 1
+        $this->upload->do_upload('file_surat');
+        $x = $this->upload->data();
+
+        $data = array(
+            'tanggal_surat' => $this->input->post('tanggal_surat'),
+            'tujuan_surat' => $this->input->post('tujuan_surat'),
+            'nomor_surat' => $this->input->post('no_surat'),
+            'perihal' => $this->input->post('perihal'),
+            'file_surat' => $x["orig_name"],
+            'bulan_skeluar' => substr($this->input->post('tanggal_surat'), 5, 2),
+        );
+        $this->db->insert('surat_keluar', $data);
         return redirect('admin/surat_keluar');
     }
 
