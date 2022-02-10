@@ -10,7 +10,7 @@
                     <a href="<?= base_url('admin/tambah_surat_izin') ?>" class="btn btn-primary">Tambah Surat Izin</a>
 
                     <?php if ($bulan == false) { ?>
-                        <a href="<?= base_url('admin/cetak_surat_izin') ?>" class="btn btn-primary">Cetak Surat Masuk</a>
+                        <a href="<?= base_url('admin/cetak_surat_izin') ?>" class="btn btn-primary">Cetak Surat Izin</a>
                         <hr>
                         <form action="<?= base_url('admin/cari_surat_izin') ?>" method="post">
                             <div class="input-group mb-3 col-6">
