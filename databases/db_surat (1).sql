@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Feb 2022 pada 16.29
+-- Waktu pembuatan: 10 Feb 2022 pada 15.19
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -55,17 +55,23 @@ INSERT INTO `akun` (`id_akun`, `username`, `password`, `level`, `bidang`, `jabat
 
 CREATE TABLE `disposisi` (
   `id_disposisi` int(11) NOT NULL,
-  `nama_disposisi` varchar(100) NOT NULL
+  `jabatan` varchar(100) NOT NULL,
+  `isi_disposisi` text NOT NULL,
+  `id_suratm` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `disposisi`
 --
 
-INSERT INTO `disposisi` (`id_disposisi`, `nama_disposisi`) VALUES
-(1, 'ESDM 2'),
-(3, 'KEPEGAWAIAN'),
-(4, 'uji 1');
+INSERT INTO `disposisi` (`id_disposisi`, `jabatan`, `isi_disposisi`, `id_suratm`) VALUES
+(1, 'ESDM 2', 's', '8'),
+(3, 'KEPEGAWAIAN', '', '8'),
+(4, 'uji 1', '', ''),
+(5, 'Kepala', 'jalan jalan', '9'),
+(6, 'sasas', 'sasa', '9'),
+(7, 'asassa', 'assaas', '8'),
+(8, 'assaasas', 'waaaa', '9');
 
 -- --------------------------------------------------------
 
@@ -88,7 +94,8 @@ CREATE TABLE `surat_izin` (
 
 INSERT INTO `surat_izin` (`id_surat_izin`, `keperluan`, `dari_tanggal`, `sampai_tanggal`, `akun_izin`, `bulan_si`) VALUES
 (1, 'Cuti tahunan', '2022-02-08', '2022-02-09', '1', '02'),
-(3, 'Cuti tahunan', '2022-03-08', '2022-03-09', '1', '03');
+(3, 'Cuti tahunan', '2022-03-08', '2022-03-09', '1', '03'),
+(4, 'Cuti tahunan', '2022-02-10', '2022-02-12', '1', '02');
 
 -- --------------------------------------------------------
 
@@ -112,10 +119,11 @@ CREATE TABLE `surat_keluar` (
 
 INSERT INTO `surat_keluar` (`id_surat_keluar`, `tanggal_surat`, `tujuan_surat`, `nomor_surat`, `perihal`, `file_surat`, `bulan_skeluar`) VALUES
 (1, '2021-05-24', 'Surabaya', '123/2021-SRB', 'Terima Kerjasama', '2111NA7796.pdf', '05'),
-(2, '2021-05-24', 'Surabaya', '123/2021-jkt', 'Persetujuan kerjasama', '2111NA7796.pdf', '03'),
 (3, '2021-05-26', 'Surabaya', '123/2021-jkt-90', 'Persetujuan Kerjasam', '2111NA7796.pdf', '01'),
 (4, '2022-02-08', 'sasa', 'mag/123/22/4', 'as', '2111NA7796.pdf', '02'),
-(5, '2022-02-07', 'aaaa', 'mag/123/22/5', 'aaaa', '2111NA7796.pdf', '02');
+(5, '2022-02-07', 'aaaa aaaaaa aaaa', 'mag/123/22/5', '2022-02-07', '', '02'),
+(7, '2022-02-11', 'ssss', 'mag/123/22/5', 'sss', 'artikel.png', '02'),
+(8, '2022-02-18', 'sasa', 'mag/123/22/6', 'm', '', '02');
 
 -- --------------------------------------------------------
 
@@ -143,11 +151,12 @@ CREATE TABLE `surat_masuk` (
 INSERT INTO `surat_masuk` (`id_surat_masuk`, `nama_surat`, `no_surat`, `tgl_s_masuk`, `tgl_t_sm`, `asal_surat_masuk`, `perihal`, `file_surat`, `disposisi`, `bulan_smasuk`) VALUES
 (1, 'asassaas 2', 'sasa', '2022-12-12', '2022-12-12', 'a', 'sadsa\"', '', '1', '02'),
 (3, 'qqq', 'qqq', '2022-02-08', '2022-02-08', 'qqqq', 'qqq', '', '1', '2-08'),
-(4, 'www', 'w', '2022-02-18', '2022-02-18', 'w', 'w', '', '1', '-18'),
+(4, 'www', 'w', '2022-02-18', '2022-02-18', 'w', 'w', '', '8', '-18'),
 (5, 'pp', 'p', '2022-02-09', '2022-02-25', 'p', 'p', '', '3', '02'),
 (6, 'asas', 'asas', '2022-10-08', '2022-10-22', 'sasa', 'sa', '', '1', '10'),
 (7, 'zzzz', 'zzzz', '2022-02-08', '2022-02-08', 'zzzz', 'zzz', '2111NA7796.pdf', '1', '02'),
-(8, 'tessss', 'tttt', '2022-02-08', '2022-02-10', 'tttt', 'tttt', 'ARTIKEL_EDDY_ADA_SAPUTRA.pdf', '1', '02');
+(8, 'tessss 222', 'tttt', '2022-02-08', '2022-02-10', 'tttt', 'tttt\"\"\"', '', '1', '02'),
+(9, 'dispo', 'dispo', '2022-02-10', '2022-02-11', 'dispo', 'dispo', 'bugatti_veyron_main_1.jpg', '', '02');
 
 --
 -- Indexes for dumped tables
@@ -197,25 +206,25 @@ ALTER TABLE `akun`
 -- AUTO_INCREMENT untuk tabel `disposisi`
 --
 ALTER TABLE `disposisi`
-  MODIFY `id_disposisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_disposisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_izin`
 --
 ALTER TABLE `surat_izin`
-  MODIFY `id_surat_izin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_surat_izin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_keluar`
 --
 ALTER TABLE `surat_keluar`
-  MODIFY `id_surat_keluar` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_surat_keluar` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_masuk`
 --
 ALTER TABLE `surat_masuk`
-  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
