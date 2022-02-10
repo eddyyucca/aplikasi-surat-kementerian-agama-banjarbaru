@@ -37,6 +37,7 @@
                                     <a href="<?= base_url('assets/file/') . $x->file_surat; ?>" class="btn btn-success">Lihat Data</a>
                                     <a href="<?= base_url('admin/dispo/') . $x->id_surat_masuk; ?>" class="btn btn-success">Lihat Disposisi</a>
                                     <a href="<?= base_url('admin/tambah_disposisi/') . $x->id_surat_masuk; ?>" class="btn btn-success">Tambah Disposisi</a>
+                                    <a href="<?= base_url('admin/buat_agenda/') . $x->id_surat_masuk; ?>" class="btn btn-success">Buat Agenda</a>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -66,6 +66,13 @@ class Admin_m extends CI_Model
         $this->db->order_by('id_surat_masuk', 'DESC');
         return   $this->db->get('surat_masuk')->result();
     }
+    public function agenda()
+    {
+        $this->db->join('surat_masuk', 'surat_masuk.id_surat_masuk = agenda.surat_masuk_id', 'left');
+        // $this->db->join('disposisi', 'disposisi.id_suratm = surat_masuk.id_surat_masuk', 'left');
+        $this->db->order_by('id_surat_masuk', 'DESC');
+        return   $this->db->get('agenda')->result();
+    }
     public function get_all_surat_izin()
     {
         $this->db->join('akun', 'akun.id_akun = surat_izin.akun_izin', 'left');
@@ -131,6 +138,15 @@ class Admin_m extends CI_Model
         $this->db->join('disposisi', 'disposisi.id_disposisi = surat_masuk.disposisi', 'left');
 
         return   $this->db->get('surat_masuk')->row();
+    }
+    public function get_row_agenda($id_agenda)
+    {
+
+        $this->db->where('id_agenda', $id_agenda);
+
+        // $this->db->join('disposisi', 'disposisi.id_disposisi = surat_masuk.disposisi', 'left');
+
+        return   $this->db->get('agenda')->row();
     }
     public function get_all_disposisi()
     {

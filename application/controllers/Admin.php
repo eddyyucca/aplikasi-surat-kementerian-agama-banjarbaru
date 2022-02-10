@@ -568,6 +568,7 @@ class Admin extends CI_Controller
         return redirect('admin/disposisi');
     }
 
+
     public function cetak_surat_izin()
     {
         $data['judul'] = 'Admin';
@@ -646,6 +647,69 @@ class Admin extends CI_Controller
         $data['data2'] = $this->admin_m->get_row_suratmasuk($id_surat_masuk);
         // $this->load->view('template/header', $data);
         $this->load->view('admin/surat_disposisi/cetak_data_disposisi', $data);
+        // $this->load->view('template/footer');
+    }
+
+    public function buat_agenda($id_surat_masuk)
+    {
+        $data['judul'] = 'Admin';
+        $data['id_surat_masuk'] = $id_surat_masuk;
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->isi_dispo($id_surat_masuk);
+        $data['data2'] = $this->admin_m->get_row_suratmasuk($id_surat_masuk);
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/agenda/tambah_agenda', $data);
+        $this->load->view('template/footer');
+    }
+    public function tambah_menghadiri($id_agenda)
+    {
+        $data['judul'] = 'Admin';
+
+        $data['nama'] = $this->session->userdata('nama');
+
+        $data['data_a'] = $this->admin_m->get_row_agenda($id_agenda);
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/agenda/tambah_hadir', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function tambah_agenda_baru()
+    {
+        $data = array(
+            'tgl_agenda' => $this->input->post('tgl_agenda'),
+            'surat_masuk_id' => $this->input->post('surat_masuk_id'),
+        );
+        $this->db->insert('agenda', $data);
+        return redirect('admin/disposisi');
+    }
+    public function tambah_hadiragenda($id_agenda)
+    {
+        $data = array(
+            'menghadiri' => $this->input->post('menghadiri'),
+        );
+        $this->db->where('id_agenda', $id_agenda);
+        $this->db->update('agenda', $data);
+        return redirect('admin/agenda');
+    }
+
+    public function agenda()
+    {
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->agenda();
+        // $data['data2'] = $this->admin_m->get_row_suratmasuk($id_surat_masuk);
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/agenda/agenda', $data);
+        $this->load->view('template/footer');
+    }
+    public function cetak_agenda()
+    {
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->agenda();
+        // $data['data2'] = $this->admin_m->get_row_suratmasuk($id_surat_masuk);
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/agenda/cetak_agenda', $data);
         // $this->load->view('template/footer');
     }
 }

@@ -569,6 +569,27 @@ class User extends CI_Controller
         $this->load->view('user/surat_izin/cetak_suratizin_sendiri', $data);
         // $this->load->view('template/footer');
     }
+
+    public function agenda()
+    {
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->agenda();
+        // $data['data2'] = $this->admin_m->get_row_suratmasuk($id_surat_masuk);
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/agenda/agenda', $data);
+        $this->load->view('template_user/footer');
+    }
+    public function cetak_agenda()
+    {
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->agenda();
+        // $data['data2'] = $this->admin_m->get_row_suratmasuk($id_surat_masuk);
+        // $this->load->view('template/header', $data);
+        $this->load->view('user/agenda/cetak_agenda', $data);
+        // $this->load->view('template/footer');
+    }
 }
 
 /* End of file User.php */

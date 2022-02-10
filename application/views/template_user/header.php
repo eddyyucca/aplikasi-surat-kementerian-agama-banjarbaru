@@ -65,6 +65,7 @@
               <a class="collapse-item" href="<?= base_url('user/surat_masuk') ?>">Surat Masuk</a>
               <a class="collapse-item" href="<?= base_url('user/surat_keluar') ?>">Surat Keluar</a>
               <a class="collapse-item" href="<?= base_url('user/disposisi') ?>">Disposisi</a>
+              <a class="collapse-item" href="<?= base_url('user/agenda') ?>">Agenda</a>
               <a class="collapse-item" href="<?= base_url('user/surat_izin') ?>">Surat Izin</a>
             </div>
           </div>
