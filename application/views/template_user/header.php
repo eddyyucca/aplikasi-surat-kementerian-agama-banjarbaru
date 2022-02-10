@@ -54,18 +54,7 @@
         </div>
         <!-- Nav Item - Pages Collapse Menu -->
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#master" aria-expanded="true" aria-controls="master">
-            <i class="fas fa-database"></i>
-            <span>Data Master</span>
-          </a>
-          <div id="master" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('user/data_disposisi') ?>">Data Disposisi</a>
-              <!-- <a class="collapse-item" href="<?= base_url('user/data_pengguna') ?>">Data Pengguna</a> -->
-            </div>
-          </div>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-database"></i>

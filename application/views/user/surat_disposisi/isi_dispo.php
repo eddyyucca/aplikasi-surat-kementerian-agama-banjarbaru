@@ -1,14 +1,8 @@
 <div class="container-fluid">
     <!-- Page Heading -->
-    <table>
-        <tr align="left">
-            <th rowspan="2"><img src="<?= base_url('assets/cop_surat.png') ?>" width="100%">
-            </th>
-        </tr>
-    </table>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-
+            <h6 class="m-0 font-weight-bold ">Data Surat Disposisi</h6>
         </div>
         <div class="card-body">
             <table>
@@ -34,8 +28,11 @@
                 </tr>
             </table>
             <hr>
+            <a href="<?= base_url('user/cetak_disposisi/') . $data2->id_surat_masuk ?>" class="btn btn-primary">Cetak Disposisi</a>
+            <br>
+            <hr>
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" border="1" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -59,6 +56,3 @@
         </div>
     </div>
 </div>
-<script>
-    window.print()
-</script>

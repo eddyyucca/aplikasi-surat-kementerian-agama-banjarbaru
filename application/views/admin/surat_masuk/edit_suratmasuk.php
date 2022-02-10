@@ -44,7 +44,7 @@
                                                                     <td width=20%>Perihal</td>
                                                                     <td><textarea class="form-control" name="perihal" rows="5"><?= $data->perihal ?></textarea></td>
                                                                 </tr>
-                                                                <tr>
+                                                                <!-- <tr>
                                                                     <td>Disposisi</td>
                                                                     <td><select name="disposisi" class="form-control">
                                                                             <option value="">--PILIH DISPOSISI--</option>
@@ -53,7 +53,7 @@
                                                                             <?php } ?>
                                                                         </select>
                                                                     </td>
-                                                                </tr>
+                                                                </tr> -->
                                                                 <tr>
                                                                     <td>File</td>
                                                                     <td>

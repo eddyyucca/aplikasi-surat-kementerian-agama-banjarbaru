@@ -55,7 +55,7 @@
                             <th>Tanggal Terima Surat</th>
                             <th>Asal Surat</th>
                             <th>Perihal</th>
-                            <th>Disposisi</th>
+                            <!-- <th>Disposisi</th> -->
                             <th>aksi</th>
                         </tr>
                     </thead>
@@ -71,7 +71,7 @@
                                 <td><?= $x->tgl_t_sm; ?></td>
                                 <td><?= $x->asal_surat_masuk; ?></td>
                                 <td><?= $x->perihal; ?></td>
-                                <td><?= $x->nama_disposisi; ?></td>
+                                <!-- <td><?= $x->nama_disposisi; ?></td> -->
                                 <td align="center">
                                     <a href="<?= base_url('admin/hapus_suratmasuk/') . $x->id_surat_masuk; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/edit_suratmasuk/') . $x->id_surat_masuk; ?>" class="btn btn-primary">Edit</a>

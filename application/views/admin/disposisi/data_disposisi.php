@@ -7,8 +7,8 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/tambah_disposisi') ?>" class="btn btn-primary">Tambah Disposisi</a>
-                    <hr>
+                    <!-- <a href="<?= base_url('admin/tambah_disposisi') ?>" class="btn btn-primary">Tambah Disposisi</a>
+                    <hr> -->
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -28,6 +28,7 @@
                                 <td align="center">
                                     <a href="<?= base_url('admin/hapus_disposisi/') . $x->id_disposisi; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/edit_disposisi/') . $x->id_disposisi; ?>" class="btn btn-primary">Edit</a>
+
                                 </td>
                             </tr>
                         <?php } ?>

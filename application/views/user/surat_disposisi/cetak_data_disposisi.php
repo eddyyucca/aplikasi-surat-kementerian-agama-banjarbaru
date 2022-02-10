@@ -8,43 +8,59 @@
     </table>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="m-0 font-weight-bold ">Data Surat Disposisi</h1>
+
         </div>
         <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border="1">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Surat</th>
-                        <th>No Surat</th>
-                        <th>Tanggal Surat Masuk</th>
-                        <th>Tanggal Terima Surat</th>
-                        <th>Asal Surat</th>
-                        <th>Perihal</th>
-                        <th>Disposisi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $nomor = 1;
-                    foreach ($data as $x) { ?>
-                        <tr>
-                            <td><?= $nomor++; ?></td>
-                            <td><?= $x->nama_surat; ?></td>
-                            <td><?= $x->no_surat; ?></td>
-                            <td><?= $x->tgl_s_masuk; ?></td>
-                            <td><?= $x->tgl_t_sm; ?></td>
-                            <td><?= $x->asal_surat_masuk; ?></td>
-                            <td><?= $x->perihal; ?></td>
-                            <td><?= $x->nama_disposisi; ?></td>
-
-                        </tr>
-                    <?php } ?>
-                </tbody>
+            <table>
+                <tr>
+                    <td>Nama Surat</td>
+                    <td>:</td>
+                    <td><?= $data2->nama_surat ?></td>
+                </tr>
+                <tr>
+                    <td>Nomor Surat</td>
+                    <td>:</td>
+                    <td><?= $data2->no_surat ?></td>
+                </tr>
+                <tr>
+                    <td>Asal Surat Masuk</td>
+                    <td>:</td>
+                    <td><?= $data2->asal_surat_masuk ?></td>
+                </tr>
+                <tr>
+                    <td>Perihal</td>
+                    <td>:</td>
+                    <td><?= $data2->perihal ?></td>
+                </tr>
             </table>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" border="1" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Jabatan</th>
+                            <th>Isi Disposisi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $nomor = 1;
+                        foreach ($data as $x) { ?>
+                            <tr>
+                                <td><?= $nomor++; ?></td>
+                                <td><?= $x->jabatan; ?></td>
+                                <td><?= $x->isi_disposisi; ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+
 <script>
     window.print()
 </script>

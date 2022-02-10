@@ -6,31 +6,6 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <div class="container">
-                    <?php if ($id_disposisi == false) { ?>
-                        <a href="<?= base_url('admin/cetak_disposisi') ?>" class="btn btn-primary">Cetak Surat Disposisi</a>
-                    <?php } else { ?>
-                        <form action="<?= base_url('admin/cetak_disposisi_bagian') ?>" method="post">
-                            <input type="hidden" name="id_disposisi" value="<?= $id_disposisi ?>">
-                            <button class="btn btn-primary" type="submit" id="button-addon2">Cetak Surat Disposisi Bagian</button>
-                        </form>
-                    <?php  } ?>
-                    <hr>
-                    <form action="<?= base_url('admin/disposisi_cari') ?>" method="post">
-                        <div class="input-group mb-3 col-6">
-                            <select name="disposisi" class="form-control">
-                                <option value="">--PILIH DISPOSISI--</option>
-                                <?php foreach ($disposisi as $dis) { ?>
-                                    <option value="<?= $dis->id_disposisi ?>"><?= $dis->nama_disposisi ?></option>
-                                <?php } ?>
-                            </select>
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
-                            </div>
-                        </div>
-                    </form>
-                    <hr>
-                </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -41,7 +16,6 @@
                             <th>Tanggal Terima Surat</th>
                             <th>Asal Surat</th>
                             <th>Perihal</th>
-                            <th>Disposisi</th>
                             <th>aksi</th>
                         </tr>
                     </thead>
@@ -57,11 +31,12 @@
                                 <td><?= $x->tgl_t_sm; ?></td>
                                 <td><?= $x->asal_surat_masuk; ?></td>
                                 <td><?= $x->perihal; ?></td>
-                                <td><?= $x->nama_disposisi; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/hapus_suratmasuk/') . $x->id_surat_masuk; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/edit_suratmasuk/') . $x->id_surat_masuk; ?>" class="btn btn-primary">Edit</a>
                                     <a href="<?= base_url('assets/file/') . $x->file_surat; ?>" class="btn btn-success">Lihat Data</a>
+                                    <a href="<?= base_url('admin/dispo/') . $x->id_surat_masuk; ?>" class="btn btn-success">Lihat Disposisi</a>
+                                    <a href="<?= base_url('admin/tambah_disposisi/') . $x->id_surat_masuk; ?>" class="btn btn-success">Tambah Disposisi</a>
                                 </td>
                             </tr>
                         <?php } ?>

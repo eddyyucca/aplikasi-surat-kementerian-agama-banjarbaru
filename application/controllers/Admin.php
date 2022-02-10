@@ -234,14 +234,14 @@ class Admin extends CI_Controller
         $this->load->view('admin/disposisi/data_disposisi', $data);
         $this->load->view('template/footer');
     }
-    public function tambah_disposisi()
-    {
-        $data['judul'] = 'Admin';
-        $data['nama'] = $this->session->userdata('nama');
-        $this->load->view('template/header', $data);
-        $this->load->view('admin/disposisi/input_disposisi', $data);
-        $this->load->view('template/footer');
-    }
+    // public function tambah_disposisi()
+    // {
+    //     $data['judul'] = 'Admin';
+    //     $data['nama'] = $this->session->userdata('nama');
+    //     $this->load->view('template/header', $data);
+    //     $this->load->view('admin/disposisi/input_disposisi', $data);
+    //     $this->load->view('template/footer');
+    // }
     public function edit_disposisi($id_disposisi)
     {
         $data['judul'] = 'Admin';
@@ -342,7 +342,7 @@ class Admin extends CI_Controller
             'asal_surat_masuk'  => $this->input->post('asal_surat_masuk'),
             'perihal' => $this->input->post('perihal'),
             'file_surat' => $x["orig_name"],
-            'disposisi' => $this->input->post('disposisi'),
+            // 'disposisi' => $this->input->post('disposisi'),
             'bulan_smasuk' => substr($this->input->post('tgl_t_sm'), 5, 2),
         );
         $this->db->insert('surat_masuk', $data);
@@ -370,7 +370,7 @@ class Admin extends CI_Controller
             'asal_surat_masuk'  => $this->input->post('asal_surat_masuk'),
             'perihal' => $this->input->post('perihal'),
             'file_surat' => $x["orig_name"],
-            'disposisi' => $this->input->post('disposisi'),
+            // 'disposisi' => $this->input->post('disposisi'),
             'bulan_smasuk' => substr($this->input->post('tgl_t_sm'), 5, 2),
         );
         $this->db->where('id_surat_masuk', $id_surat_masuk);
@@ -485,17 +485,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/surat_disposisi/surat_disposisi', $data);
         $this->load->view('template/footer');
     }
-    public function cetak_disposisi()
-    {
-        $data['judul'] = 'Admin';
-        $data['nama'] = $this->session->userdata('nama');
-        $data['data'] = $this->admin_m->get_all_suratmasuk();
 
-        $data['disposisi'] = $this->admin_m->get_all_disposisi();
-        // $this->load->view('template/header', $data);
-        $this->load->view('admin/surat_disposisi/cetak_data_disposisi', $data);
-        // $this->load->view('template/footer');
-    }
     public function cetak_disposisi_bagian()
     {
         $data['judul'] = 'Admin';
@@ -542,6 +532,17 @@ class Admin extends CI_Controller
         $this->load->view('admin/surat_izin/input_suratizin', $data);
         $this->load->view('template/footer');
     }
+    public function tambah_dispo($id_surat_masuk)
+    {
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->isi_dispo($id_surat_masuk);
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_disposisi/isi_dispo', $data);
+        $this->load->view('template/footer');
+    }
+
+
 
     public function proses_surat_izin()
     {
@@ -554,6 +555,17 @@ class Admin extends CI_Controller
         );
         $this->db->insert('surat_izin', $data);
         return redirect('admin/surat_izin');
+    }
+    public function proses_dispo_m()
+    {
+        $data = array(
+            'jabatan' => $this->input->post('jabatan'),
+            'isi_disposisi' => $this->input->post('isi_disposisi'),
+            'id_suratm' => $this->input->post('id_suratm'),
+
+        );
+        $this->db->insert('disposisi', $data);
+        return redirect('admin/disposisi');
     }
 
     public function cetak_surat_izin()
@@ -602,6 +614,38 @@ class Admin extends CI_Controller
         $data['data'] = $this->admin_m->get_all_surat_izin_s($id_surat_izin);
         // $this->load->view('template/header', $data);
         $this->load->view('admin/surat_izin/cetak_suratizin_sendiri', $data);
+        // $this->load->view('template/footer');
+    }
+
+    public function tambah_disposisi($id_surat_masuk)
+    {
+        $data['judul'] = 'Admin';
+        $data['id_surat_masuk'] = $id_surat_masuk;
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->isi_dispo($id_surat_masuk);
+        $data['data2'] = $this->admin_m->get_row_suratmasuk($id_surat_masuk);
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_disposisi/tambah_disposisi', $data);
+        $this->load->view('template/footer');
+    }
+    public function dispo($id_surat_masuk)
+    {
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->isi_dispo($id_surat_masuk);
+        $data['data2'] = $this->admin_m->get_row_suratmasuk($id_surat_masuk);
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_disposisi/isi_dispo', $data);
+        $this->load->view('template/footer');
+    }
+    public function cetak_disposisi($id_surat_masuk)
+    {
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->isi_dispo($id_surat_masuk);
+        $data['data2'] = $this->admin_m->get_row_suratmasuk($id_surat_masuk);
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/surat_disposisi/cetak_data_disposisi', $data);
         // $this->load->view('template/footer');
     }
 }
