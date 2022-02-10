@@ -214,6 +214,17 @@ class User extends CI_Controller
         $this->load->view('user/surat_masuk/data_suratmasuk', $data);
         $this->load->view('template_user/footer');
     }
+    public function caritanggal_sk()
+    {
+        $data['judul'] = 'Admin';
+        $data['nama'] = $this->session->userdata('nama');
+        $bulan = $this->input->post('bulan');
+        $data['bulan'] = $this->input->post('bulan');
+        $data['data'] = $this->admin_m->get_all_suratkeluar_bulan($bulan);
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/surat_keluar/data_suratkeluar', $data);
+        $this->load->view('template_user/footer');
+    }
     public function data_disposisi()
     {
         $data['judul'] = 'User';
