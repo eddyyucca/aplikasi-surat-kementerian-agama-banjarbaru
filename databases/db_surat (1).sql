@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Feb 2022 pada 15.19
+-- Waktu pembuatan: 10 Feb 2022 pada 16.13
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_surat`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `agenda`
+--
+
+CREATE TABLE `agenda` (
+  `id_agenda` int(11) NOT NULL,
+  `tgl_agenda` varchar(100) NOT NULL,
+  `surat_masuk_id` varchar(30) NOT NULL,
+  `menghadiri` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `agenda`
+--
+
+INSERT INTO `agenda` (`id_agenda`, `tgl_agenda`, `surat_masuk_id`, `menghadiri`) VALUES
+(1, '2022-02-10', '9', 'a'),
+(2, '2022-02-26', '8', 'f');
 
 -- --------------------------------------------------------
 
@@ -163,6 +184,12 @@ INSERT INTO `surat_masuk` (`id_surat_masuk`, `nama_surat`, `no_surat`, `tgl_s_ma
 --
 
 --
+-- Indeks untuk tabel `agenda`
+--
+ALTER TABLE `agenda`
+  ADD PRIMARY KEY (`id_agenda`);
+
+--
 -- Indeks untuk tabel `akun`
 --
 ALTER TABLE `akun`
@@ -195,6 +222,12 @@ ALTER TABLE `surat_masuk`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `agenda`
+--
+ALTER TABLE `agenda`
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `akun`
