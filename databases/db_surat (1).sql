@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Feb 2022 pada 16.13
+-- Waktu pembuatan: 21 Feb 2022 pada 03.48
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -64,7 +64,7 @@ CREATE TABLE `akun` (
 
 INSERT INTO `akun` (`id_akun`, `username`, `password`, `level`, `bidang`, `jabatan`, `nama`) VALUES
 (1, 'admin666', 'fae0b27c451c728867a567e8c1bb4e53', 'admin', 'tes', 'tes2', 'tes3'),
-(3, '123', '202cb962ac59075b964b07152d234b70', 'user', 'tes', 'tes2', 'tes3'),
+(3, '123', '202cb962ac59075b964b07152d234b70', 'admin', 'tes', 'tes2', 'tes3'),
 (4, 'nadi', 'a6d91358169c3540346213cbcb439322', 'user', 'Pengadaan', 'Kepala', 'nadi'),
 (5, 'eddy', '5aa8fed9741d33c63868a87f1af05ab7', 'user', 'Pengadaan', 'Kepala', 'Eddy Adha Saputra');
 
@@ -116,7 +116,9 @@ CREATE TABLE `surat_izin` (
 INSERT INTO `surat_izin` (`id_surat_izin`, `keperluan`, `dari_tanggal`, `sampai_tanggal`, `akun_izin`, `bulan_si`) VALUES
 (1, 'Cuti tahunan', '2022-02-08', '2022-02-09', '1', '02'),
 (3, 'Cuti tahunan', '2022-03-08', '2022-03-09', '1', '03'),
-(4, 'Cuti tahunan', '2022-02-10', '2022-02-12', '1', '02');
+(4, 'Cuti tahunan', '2022-02-10', '2022-02-12', '1', '02'),
+(5, 'Cuti tahunan', '2022-02-20', '2022-02-23', '1', '02'),
+(6, 'Cuti tahunan', '2022-02-20', '2022-02-23', '3', '02');
 
 -- --------------------------------------------------------
 
@@ -245,7 +247,7 @@ ALTER TABLE `disposisi`
 -- AUTO_INCREMENT untuk tabel `surat_izin`
 --
 ALTER TABLE `surat_izin`
-  MODIFY `id_surat_izin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_surat_izin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_keluar`
