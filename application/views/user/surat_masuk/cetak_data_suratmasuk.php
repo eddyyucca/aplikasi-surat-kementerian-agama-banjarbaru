@@ -25,7 +25,6 @@
                             <th>Tanggal Terima Surat</th>
                             <th>Asal Surat</th>
                             <th>Perihal</th>
-                            <th>Disposisi</th>
 
                         </tr>
                     </thead>
@@ -41,7 +40,6 @@
                                 <td><?= $x->tgl_t_sm; ?></td>
                                 <td><?= $x->asal_surat_masuk; ?></td>
                                 <td><?= $x->perihal; ?></td>
-                                <td><?= $x->nama_disposisi; ?></td>
 
                             </tr>
                         <?php } ?>
